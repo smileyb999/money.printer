@@ -1,0 +1,24 @@
+{
+  "name": "MONEY.PRINTER",
+  "short_name": "M.PRINTER",
+  "description": "Pre-trade checklist, journal, and stats dashboard for disciplined execution.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0a0a0c",
+  "theme_color": "#0a0a0c",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiB2aWV3Qm94PSIwIDAgMTkyIDE5MiI+CjxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiByeD0iNDQiIGZpbGw9IiMwYTBhMGMiLz4KPHJlY3QgeD0iOCIgeT0iOCIgd2lkdGg9IjE3NiIgaGVpZ2h0PSIxNzYiIHJ4PSIzNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjZmZjI2IiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9IjAuMyIvPgo8dGV4dCB4PSI5NiIgeT0iODQiIGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iNDYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMyNmZmMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk0uUDwvdGV4dD4KPHRleHQgeD0iOTYiIHk9IjEyMiIgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIxNSIgZm9udC13ZWlnaHQ9IjQwMCIgZmlsbD0iIzI2ZmYyNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgb3BhY2l0eT0iMC41Ij52OTk8L3RleHQ+CjxsaW5lIHgxPSI0NCIgeTE9IjE1MCIgeDI9IjE0OCIgeTI9IjE1MCIgc3Ryb2tlPSIjMjZmZjI2IiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9IjAuNCIvPgo8Y2lyY2xlIGN4PSIxNDgiIGN5PSIxNTAiIHI9IjMiIGZpbGw9IiMyNmZmMjYiIG9wYWNpdHk9IjAuNiIvPgo8L3N2Zz4=",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+CjxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iMTAwIiBmaWxsPSIjMGEwYTBjIi8+CjxyZWN0IHg9IjE2IiB5PSIxNiIgd2lkdGg9IjQ4MCIgaGVpZ2h0PSI0ODAiIHJ4PSI4NCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjZmZjI2IiBzdHJva2Utd2lkdGg9IjMiIG9wYWNpdHk9IjAuMyIvPgo8dGV4dCB4PSIyNTYiIHk9IjIyNiIgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIxMjAiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMyNmZmMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk0uUDwvdGV4dD4KPHRleHQgeD0iMjU2IiB5PSIzMjQiIGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iNDAiIGZvbnQtd2VpZ2h0PSI0MDAiIGZpbGw9IiMyNmZmMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIG9wYWNpdHk9IjAuNSI+djk5PC90ZXh0Pgo8bGluZSB4MT0iMTAwIiB5MT0iNDAwIiB4Mj0iNDEyIiB5Mj0iNDAwIiBzdHJva2U9IiMyNmZmMjYiIHN0cm9rZS13aWR0aD0iMyIgb3BhY2l0eT0iMC40Ii8+CjxjaXJjbGUgY3g9IjQxMiIgY3k9IjQwMCIgcj0iNiIgZmlsbD0iIzI2ZmYyNiIgb3BhY2l0eT0iMC42Ii8+Cjwvc3ZnPg==",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
