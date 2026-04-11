@@ -1,0 +1,2701 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="MONEY.PRINTER">
+<meta name="theme-color" content="#0a0a0c">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIiB2aWV3Qm94PSIwIDAgMTgwIDE4MCI+CjxyZWN0IHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIiByeD0iNDAiIGZpbGw9IiMwYTBhMGMiLz4KPHJlY3QgeD0iOCIgeT0iOCIgd2lkdGg9IjE2NCIgaGVpZ2h0PSIxNjQiIHJ4PSIzNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjZmZjI2IiBzdHJva2Utd2lkdGg9IjEuNSIgb3BhY2l0eT0iMC4zIi8+Cjx0ZXh0IHg9IjkwIiB5PSI3OCIgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSI0MiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzI2ZmYyNiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TS5QPC90ZXh0Pgo8dGV4dCB4PSI5MCIgeT0iMTE1IiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iNDAwIiBmaWxsPSIjMjZmZjI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBvcGFjaXR5PSIwLjUiPnY5OTwvdGV4dD4KPGxpbmUgeDE9IjQwIiB5MT0iMTQwIiB4Mj0iMTQwIiB5Mj0iMTQwIiBzdHJva2U9IiMyNmZmMjYiIHN0cm9rZS13aWR0aD0iMiIgb3BhY2l0eT0iMC40Ii8+CjxjaXJjbGUgY3g9IjE0MCIgY3k9IjE0MCIgcj0iMyIgZmlsbD0iIzI2ZmYyNiIgb3BhY2l0eT0iMC42Ii8+Cjwvc3ZnPg==">
+<link rel="manifest" href="manifest.json">
+<title>MONEY.PRINTER — Pre-Trade Checklist v99</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+
+:root {
+--bg: #0a0a0c;
+--surface: #111114;
+--border: #1e1e24;
+--accent: #26ff26;
+--accent2: #ff6b35;
+--accent3: #35c8f1;
+--text: #e8e8f0;
+--muted: #5a5a70;
+--pass: #26ff26;
+--fail: #ff4444;
+--warn: #ffaa00;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+background: var(--bg);
+color: var(--text);
+font-family: 'Syne', sans-serif;
+min-height: 100vh;
+padding: 24px 16px 60px;
+}
+
+/* ── HEADER ── */
+.header {
+border-bottom: 1px solid var(--border);
+padding-bottom: 20px;
+margin-bottom: 20px;
+}
+.header-top {
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+}
+.logo {
+font-family: 'Space Mono', monospace;
+font-size: 11px;
+color: var(--accent);
+letter-spacing: 3px;
+text-transform: uppercase;
+margin-bottom: 4px;
+}
+h1 {
+font-size: 22px;
+font-weight: 800;
+letter-spacing: -0.5px;
+line-height: 1.1;
+}
+.subtitle {
+font-size: 12px;
+color: var(--muted);
+margin-top: 4px;
+font-family: 'Space Mono', monospace;
+}
+.score-display {
+font-family: 'Space Mono', monospace;
+font-size: 28px;
+font-weight: 700;
+color: var(--accent);
+line-height: 1;
+}
+.score-label {
+font-size: 10px;
+color: var(--muted);
+letter-spacing: 2px;
+text-transform: uppercase;
+text-align: right;
+}
+
+/* ── QUOTE TICKER ── */
+.quote-ticker {
+background: var(--surface);
+border: 1px solid var(--border);
+border-radius: 8px;
+padding: 14px 16px;
+margin-bottom: 20px;
+min-height: 64px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+position: relative;
+overflow: hidden;
+}
+.quote-tag {
+font-family: 'Space Mono', monospace;
+font-size: 9px;
+letter-spacing: 3px;
+color: var(--accent);
+text-transform: uppercase;
+margin-bottom: 6px;
+}
+.quote-text {
+font-size: 13px;
+font-weight: 600;
+color: var(--text);
+line-height: 1.4;
+transition: opacity 0.4s ease;
+}
+.quote-dots {
+display: flex;
+gap: 5px;
+margin-top: 10px;
+}
+.quote-dot {
+width: 5px;
+height: 5px;
+border-radius: 50%;
+background: var(--border);
+cursor: pointer;
+transition: background 0.2s;
+}
+.quote-dot.active { background: var(--accent); }
+
+/* ── LOSS PROTOCOL ── */
+.loss-protocol-wrap {
+margin-bottom: 20px;
+}
+#belowLossGate {
+transition: opacity 0.3s ease;
+}
+#belowLossGate.loss-locked {
+opacity: 0.15;
+pointer-events: none;
+user-select: none;
+}
+
+/* ── PRE-FLIGHT GATE ── */
+.preflight-wrap {
+margin-bottom: 20px;
+}
+.preflight-header {
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin-bottom: 12px;
+}
+.preflight-title {
+font-size: 11px;
+font-weight: 700;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: var(--muted);
+}
+.gate-status {
+font-family: 'Space Mono', monospace;
+font-size: 10px;
+letter-spacing: 2px;
+padding: 3px 8px;
+border-radius: 3px;
+transition: all 0.3s;
+}
+.gate-status.locked {
+color: var(--fail);
+background: rgba(255,68,68,0.1);
+border: 1px solid rgba(255,68,68,0.2);
+}
+.gate-status.unlocked {
+color: var(--pass);
+background: rgba(200,241,53,0.1);
+border: 1px solid rgba(200,241,53,0.2);
+}
+
+.preflight-item {
+display: flex;
+align-items: flex-start;
+gap: 12px;
+padding: 12px 14px;
+background: var(--surface);
+border: 1px solid var(--border);
+border-radius: 6px;
+margin-bottom: 6px;
+cursor: pointer;
+transition: all 0.15s;
+user-select: none;
+}
+.preflight-item:hover { border-color: #2e2e38; }
+.preflight-item.cleared {
+border-color: rgba(200,241,53,0.2);
+background: rgba(200,241,53,0.03);
+}
+.pf-box {
+width: 18px;
+height: 18px;
+border: 1.5px solid var(--muted);
+border-radius: 3px;
+flex-shrink: 0;
+margin-top: 1px;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: all 0.15s;
+}
+.preflight-item.cleared .pf-box {
+background: var(--accent);
+border-color: var(--accent);
+}
+.preflight-item.cleared .pf-box::after {
+content: '';
+display: block;
+width: 8px;
+height: 8px;
+border: 1.5px solid #0a0a0c;
+border-radius: 1px;
+}
+.pf-text { font-size: 14px; line-height: 1.4; flex: 1; }
+.pf-note {
+font-size: 11px;
+color: var(--muted);
+margin-top: 3px;
+font-family: 'Space Mono', monospace;
+}
+
+/* ── MAIN CHECKLIST (lockable) ── */
+.checklist-body {
+transition: opacity 0.3s ease;
+}
+.checklist-body.locked {
+opacity: 0.25;
+pointer-events: none;
+user-select: none;
+}
+.lock-message {
+text-align: center;
+padding: 16px;
+font-family: 'Space Mono', monospace;
+font-size: 11px;
+color: var(--fail);
+letter-spacing: 2px;
+text-transform: uppercase;
+background: rgba(255,68,68,0.05);
+border: 1px solid rgba(255,68,68,0.15);
+border-radius: 6px;
+margin-bottom: 20px;
+display: block;
+}
+.lock-message.hidden { display: none; }
+
+/* ── MODE TOGGLE ── */
+.mode-toggle {
+display: flex;
+background: var(--surface);
+border: 1px solid var(--border);
+border-radius: 8px;
+padding: 4px;
+margin-bottom: 16px;
+gap: 4px;
+}
+.mode-btn {
+flex: 1;
+padding: 10px;
+border: none;
+border-radius: 5px;
+background: none;
+font-family: 'Space Mono', monospace;
+font-size: 11px;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: var(--muted);
+cursor: pointer;
+transition: all 0.2s;
+}
+.mode-btn.active { background: var(--accent); color: #0a0a0c; font-weight: 700; }
+.mode-btn.active.scalp-active { background: var(--accent3); }
+
+.mode-indicator {
+text-align: center;
+font-family: 'Space Mono', monospace;
+font-size: 10px;
+letter-spacing: 3px;
+text-transform: uppercase;
+margin-bottom: 20px;
+padding: 6px;
+border-radius: 4px;
+}
+.mode-indicator.swing { color: var(--accent); background: rgba(38,255,38,0.06); border: 1px solid rgba(38,255,38,0.15); }
+.mode-indicator.scalp { color: var(--accent3); background: rgba(53,200,241,0.06); border: 1px solid rgba(53,200,241,0.15); }
+
+/* ── ASSET ROW ── */
+.asset-row {
+display: flex;
+gap: 8px;
+margin-bottom: 24px;
+flex-wrap: wrap;
+}
+.asset-btn {
+background: var(--surface);
+border: 1px solid var(--border);
+color: var(--muted);
+padding: 6px 18px;
+border-radius: 4px;
+font-family: 'Space Mono', monospace;
+font-size: 11px;
+letter-spacing: 1px;
+cursor: pointer;
+transition: all 0.15s;
+}
+.asset-btn.active {
+border-color: var(--accent);
+color: var(--accent);
+background: rgba(38,255,38,0.06);
+}
+
+/* ── SECTIONS ── */
+.section { margin-bottom: 24px; }
+.section.scalp-only { display: none; }
+.section.swing-only { display: block; }
+
+.section-header {
+display: flex;
+align-items: center;
+gap: 10px;
+margin-bottom: 12px;
+}
+.section-num {
+font-family: 'Space Mono', monospace;
+font-size: 10px;
+color: var(--accent);
+background: rgba(38,255,38,0.1);
+padding: 2px 7px;
+border-radius: 2px;
+}
+.section-num.scalp { color: var(--accent3); background: rgba(53,200,241,0.1); }
+.section-title {
+font-size: 11px;
+font-weight: 700;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: var(--muted);
+}
+
+/* ── CHECK ITEMS ── */
+.check-item {
+display: flex;
+align-items: flex-start;
+gap: 12px;
+padding: 11px 14px;
+background: var(--surface);
+border: 1px solid var(--border);
+border-radius: 6px;
+margin-bottom: 6px;
+cursor: pointer;
+transition: all 0.15s;
+user-select: none;
+}
+.check-item:hover { border-color: #2e2e38; }
+.check-item.checked {
+border-color: rgba(38,255,38,0.25);
+background: rgba(38,255,38,0.04);
+}
+.checkbox {
+width: 18px; height: 18px;
+border: 1.5px solid var(--muted);
+border-radius: 3px; flex-shrink: 0; margin-top: 1px;
+display: flex; align-items: center; justify-content: center;
+transition: all 0.15s;
+}
+.check-item.checked .checkbox { background: var(--accent); border-color: var(--accent); }
+.check-item.checked .checkbox::after { content: ''; }
+.check-text { font-size: 14px; line-height: 1.4; flex: 1; }
+.check-note { font-size: 11px; color: var(--muted); margin-top: 3px; font-family: 'Space Mono', monospace; }
+
+/* ── CONFLUENCE ── */
+.confluence-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 6px;
+margin-bottom: 8px;
+}
+.conf-item {
+display: flex; align-items: center; gap: 10px;
+padding: 10px 12px; background: var(--surface);
+border: 1px solid var(--border); border-radius: 6px;
+cursor: pointer; transition: all 0.15s; user-select: none;
+}
+.conf-item.active { border-color: rgba(38,255,38,0.3); background: rgba(38,255,38,0.06); }
+.conf-item.ltf-conf.active { border-color: rgba(53,200,241,0.3); background: rgba(53,200,241,0.06); }
+.conf-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); flex-shrink: 0; transition: all 0.15s; }
+.conf-item.active .conf-dot { background: var(--accent); box-shadow: 0 0 6px var(--accent); }
+.conf-item.ltf-conf.active .conf-dot { background: var(--accent3); box-shadow: 0 0 6px var(--accent3); }
+.conf-label { font-size: 12px; color: var(--muted); transition: color 0.15s; }
+.conf-item.active .conf-label { color: var(--text); }
+
+.context-grid {
+display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
+margin-bottom: 8px; opacity: 0.7;
+}
+.context-item {
+display: flex; align-items: center; gap: 8px; padding: 8px 12px;
+background: var(--surface); border: 1px dashed var(--border);
+border-radius: 6px; cursor: pointer; transition: all 0.15s; user-select: none;
+}
+.context-item.active { border-color: rgba(53,200,241,0.3); background: rgba(53,200,241,0.04); opacity: 1; }
+.context-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); flex-shrink: 0; transition: all 0.15s; }
+.context-item.active .context-dot { background: var(--accent3); }
+.context-label { font-size: 11px; color: var(--muted); transition: color 0.15s; font-family: 'Space Mono', monospace; }
+.context-item.active .context-label { color: var(--accent3); }
+
+.score-bar-wrap {
+background: var(--surface); border: 1px solid var(--border);
+border-radius: 6px; padding: 12px 14px; margin-top: 8px;
+}
+.csb-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.csb-label { font-size: 11px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
+.csb-num { font-family: 'Space Mono', monospace; font-size: 16px; font-weight: 700; }
+.bar-track { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 2px; transition: width 0.3s ease, background 0.3s ease; }
+
+.divider-label {
+font-family: 'Space Mono', monospace; font-size: 10px; color: var(--muted);
+letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; padding-left: 2px;
+}
+
+/* ── RISK ── */
+.risk-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+.input-group { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 10px 12px; }
+.input-label { font-size: 10px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; display: block; }
+.input-group input { background: none; border: none; color: var(--text); font-family: 'Space Mono', monospace; font-size: 16px; width: 100%; outline: none; }
+.input-group input::placeholder { color: var(--border); }
+.rr-display {
+background: var(--surface); border: 1px solid var(--border); border-radius: 6px;
+padding: 12px 14px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;
+}
+.rr-label { font-size: 11px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
+.rr-value { font-family: 'Space Mono', monospace; font-size: 20px; font-weight: 700; color: var(--accent); }
+
+/* ── TAGS ── */
+.tag {
+display: inline-block; font-family: 'Space Mono', monospace; font-size: 9px;
+letter-spacing: 1px; padding: 2px 6px; border-radius: 2px; margin-left: 6px; vertical-align: middle;
+}
+.tag-hard { background: rgba(255,68,68,0.15); color: #ff6666; border: 1px solid rgba(255,68,68,0.2); }
+.tag-exec { background: rgba(255,107,53,0.15); color: var(--accent2); border: 1px solid rgba(255,107,53,0.2); }
+
+/* ── VERDICT ── */
+.verdict-box {
+margin-top: 20px; padding: 16px; border-radius: 8px;
+border: 1px solid var(--border); background: var(--surface); text-align: center;
+}
+.verdict-box.go { border-color: var(--accent); background: rgba(38,255,38,0.06); }
+.verdict-box.no-go { border-color: var(--fail); background: rgba(255,68,68,0.06); }
+.verdict-box.warn { border-color: var(--warn); background: rgba(255,170,0,0.06); }
+.verdict-text { font-size: 20px; font-weight: 800; letter-spacing: 1px; }
+.verdict-box.go .verdict-text { color: var(--accent); }
+.verdict-box.no-go .verdict-text { color: var(--fail); }
+.verdict-box.warn .verdict-text { color: var(--warn); }
+.verdict-sub { font-size: 12px; color: var(--muted); margin-top: 4px; font-family: 'Space Mono', monospace; }
+
+/* ── LOSS TRACKER ── */
+.loss-dots { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+.loss-dot {
+width: 34px; height: 34px; border-radius: 50%;
+border: 1.5px solid var(--border); background: var(--surface);
+display: flex; align-items: center; justify-content: center;
+font-family: 'Space Mono', monospace; font-size: 11px; color: var(--muted);
+cursor: default; transition: all 0.15s; user-select: none; flex-shrink: 0;
+}
+.loss-dot.l1 { border-color: #ff6644; color: #ff6644; }
+.loss-dot.l2 { border-color: #ff4422; color: #ff4422; }
+.loss-dot.active.l1 { background: #ff6644; color: white; }
+.loss-dot.active.l2 { background: #ff2200; color: white; box-shadow: 0 0 10px rgba(255,34,0,0.4); }
+.loss-rule-row {
+display: flex; align-items: center; gap: 10px; padding: 9px 14px;
+background: var(--surface); border: 1px solid var(--border);
+border-radius: 6px; margin-bottom: 6px; transition: all 0.2s;
+}
+.loss-rule-row.triggered { border-color: rgba(255,68,68,0.4); background: rgba(255,68,68,0.08); }
+.loss-indicator { width: 6px; height: 6px; border-radius: 50%; background: var(--border); flex-shrink: 0; transition: all 0.2s; }
+.loss-rule-row.triggered .loss-indicator { background: var(--fail); box-shadow: 0 0 6px var(--fail); }
+.loss-rule-text { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--muted); transition: color 0.2s; }
+.loss-rule-row.triggered .loss-rule-text { color: #ff6666; }
+
+.preflight-wrap.sealed .preflight-item {
+cursor: default;
+opacity: 0.6;
+}
+.preflight-wrap.sealed .preflight-item:hover {
+border-color: rgba(200,241,53,0.2);
+}
+.preflight-wrap.sealed {
+opacity: 0.75;
+}
+
+.journal-row { margin-bottom: 8px; }
+.journal-toggle-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 5px; }
+.journal-pill {
+padding: 6px 14px; border-radius: 4px;
+border: 1px solid var(--border); background: var(--surface);
+color: var(--muted); font-family: 'Space Mono', monospace;
+font-size: 11px; letter-spacing: 1px; cursor: pointer; transition: all 0.15s;
+}
+.journal-pill.active { border-color: var(--accent); color: var(--accent); background: rgba(38,255,38,0.06); }
+.journal-pill.ghost-pill.active { border-color: var(--accent3); color: var(--accent3); background: rgba(53,200,241,0.06); }
+.journal-pill.win-pill.active { border-color: var(--pass); color: var(--pass); background: rgba(38,255,38,0.06); }
+.journal-pill.loss-pill.active { border-color: var(--fail); color: var(--fail); background: rgba(255,68,68,0.06); }
+.journal-pill.yes-pill.active { border-color: var(--pass); color: var(--pass); background: rgba(38,255,38,0.06); }
+.journal-pill.long-pill.active { border-color: var(--pass); color: var(--pass); background: rgba(38,255,38,0.06); }
+.journal-pill.short-pill.active { border-color: var(--fail); color: var(--fail); background: rgba(255,68,68,0.06); }
+.journal-pill.tf-long.active { border-color: var(--pass); color: var(--pass); background: rgba(38,255,38,0.06); }
+.journal-pill.tf-short.active { border-color: var(--fail); color: var(--fail); background: rgba(255,68,68,0.06); }
+.journal-pill.ny-pill.active { border-color: var(--accent2); color: var(--accent2); background: rgba(255,107,53,0.06); }
+.journal-pill.ldn-pill.active { border-color: var(--accent3); color: var(--accent3); background: rgba(53,200,241,0.06); }
+.journal-pill.asia-pill.active { border-color: var(--pass); color: var(--pass); background: rgba(38,255,38,0.06); }
+.journal-pill.wknd-pill.active { border-color: #a855f7; color: #a855f7; background: rgba(168,85,247,0.06); }
+.journal-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+.journal-textarea-wrap { margin-bottom: 8px; }
+.journal-textarea-wrap textarea {
+background: none; border: none; color: var(--text);
+font-family: 'Space Mono', monospace; font-size: 12px;
+width: 100%; outline: none; resize: none; line-height: 1.6;
+}
+.journal-textarea-wrap textarea::placeholder { color: var(--border); }
+
+/* ── NAV TABS ── */
+.nav-tabs {
+display: flex;
+background: var(--surface);
+border: 1px solid var(--border);
+border-radius: 8px;
+padding: 4px;
+margin-bottom: 24px;
+gap: 4px;
+}
+.nav-tab {
+flex: 1; padding: 10px 6px; border: none; border-radius: 5px;
+background: none; font-family: 'Space Mono', monospace;
+font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+color: var(--muted); cursor: pointer; transition: all 0.2s;
+}
+.nav-tab.active { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+.nav-tab.ghost-tab.active { color: var(--accent3); border-color: rgba(53,200,241,0.3); background: rgba(53,200,241,0.06); }
+.nav-tab.log-tab.active { color: var(--accent); border-color: rgba(200,241,53,0.3); background: rgba(200,241,53,0.06); }
+.nav-tab.journal-tab.active { color: var(--accent2); border-color: rgba(255,107,53,0.3); background: rgba(255,107,53,0.06); }
+
+/* ── STATS ── */
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; }
+.stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 12px; text-align: center; }
+.stat-value { font-family: 'JetBrains Mono', monospace; font-size: 18px; font-weight: 700; color: var(--accent); line-height:1.2; }
+.stat-value.warn { color: var(--warn); }
+.stat-value.fail { color: var(--fail); }
+.stat-value.cyan { color: var(--accent3); }
+.stat-value.orange { color: var(--accent2); }
+.stat-value .sub { font-size:11px; color:var(--muted); font-weight:400; }
+.stat-label { font-family: 'JetBrains Mono', monospace; font-size: 8px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; line-height:1.3; }
+
+/* ── COUNTDOWN ── */
+.countdown-display {
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+  color: var(--fail);
+  text-align: center;
+  padding: 10px;
+  background: rgba(255,68,68,0.05);
+  border: 1px solid rgba(255,68,68,0.15);
+  border-radius: 6px;
+  margin-top: 8px;
+  letter-spacing: 2px;
+}
+.countdown-display.hidden { display: none; }
+
+/* ── JOURNAL EXPAND ── */
+.journal-expand { max-height:0; overflow:hidden; transition:max-height 0.4s ease; }
+.journal-expand.open { max-height:3000px; }
+.journal-inner { padding-top:20px; }
+.journal-header { display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+.journal-icon { display:inline-flex; align-items:center; padding:3px 7px; border-radius:2px; }
+.journal-title-label { font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--muted); }
+.timer-badge { display:inline-flex; align-items:center; gap:6px; padding:6px 12px; background:rgba(255,107,53,0.08); border:1px solid rgba(255,107,53,0.2); border-radius:4px; font-family:'Space Mono',monospace; font-size:10px; color:var(--accent2); letter-spacing:1px; margin-bottom:16px; }
+.timer-dot { width:6px; height:6px; border-radius:50%; background:var(--accent2); animation:pulse 1.5s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.save-btn.journal-save { background:rgba(255,107,53,0.08); border-color:rgba(255,107,53,0.3); color:var(--accent2); }
+.save-btn.journal-save:hover { background:rgba(255,107,53,0.15); }
+
+/* Execute interactive */
+.verdict-box.go { border-color: var(--accent); background: rgba(38,255,38,0.06); cursor:pointer; }
+.verdict-box.go:hover { background: rgba(38,255,38,0.1); }
+.verdict-box.go.trade-active { border-color: var(--accent2); background: rgba(255,107,53,0.06); }
+.verdict-box.go.trade-active .verdict-text { color: var(--accent2); }
+.verdict-hint { font-family:'Space Mono',monospace; font-size:9px; color:var(--muted); letter-spacing:2px; text-transform:uppercase; margin-top:8px; opacity:0.6; }
+
+.view { display: none; }
+.view.active { display: block; }
+
+/* ── GHOST LOG ── */
+.ghost-log-wrap { }
+.ghost-form .input-group { margin-bottom: 8px; }
+.ghost-form textarea {
+background: none; border: none; color: var(--text);
+font-family: 'Space Mono', monospace; font-size: 12px;
+width: 100%; outline: none; resize: none; line-height: 1.6;
+}
+.ghost-form textarea::placeholder { color: var(--border); }
+.save-btn {
+width: 100%; padding: 12px; margin-top: 8px;
+background: rgba(53,200,241,0.08); border: 1px solid rgba(53,200,241,0.3);
+color: var(--accent3); font-family: 'Space Mono', monospace;
+font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+cursor: pointer; border-radius: 6px; transition: all 0.15s;
+}
+.save-btn:hover { background: rgba(53,200,241,0.15); }
+.save-btn.trade-save {
+background: rgba(38,255,38,0.08); border-color: rgba(38,255,38,0.3);
+color: var(--accent);
+}
+.save-btn.trade-save:hover { background: rgba(38,255,38,0.15); }
+
+/* ── ENTRY LOG ── */
+.entry-card {
+background: var(--surface); border: 1px solid var(--border);
+border-radius: 8px; padding: 14px; margin-bottom: 10px;
+}
+.entry-card.ghost-card { border-color: rgba(53,200,241,0.2); }
+.entry-card.win-card { border-color: rgba(38,255,38,0.2); }
+.entry-card.loss-card { border-color: rgba(255,68,68,0.2); }
+.entry-header {
+display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;
+}
+.entry-type {
+font-family: 'Space Mono', monospace; font-size: 10px;
+letter-spacing: 2px; text-transform: uppercase;
+}
+.entry-type.ghost { color: var(--accent3); }
+.entry-type.win { color: var(--pass); }
+.entry-type.loss { color: var(--fail); }
+.entry-type.breakeven { color: var(--warn); }
+.entry-date { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--muted); }
+.entry-meta {
+display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px;
+}
+.entry-tag {
+font-family: 'Space Mono', monospace; font-size: 10px;
+padding: 2px 8px; border-radius: 3px;
+background: rgba(255,255,255,0.04); color: var(--muted);
+border: 1px solid var(--border);
+}
+.entry-body { font-size: 12px; color: var(--muted); line-height: 1.5; }
+.entry-delete {
+background: none; border: none; color: var(--muted);
+font-size: 14px; cursor: pointer; padding: 2px 6px;
+transition: color 0.15s;
+}
+.entry-delete:hover { color: var(--fail); }
+.no-entries {
+text-align: center; padding: 40px 20px;
+font-family: 'Space Mono', monospace; font-size: 11px;
+color: var(--muted); letter-spacing: 2px;
+}
+
+.reset-btn {
+width: 100%; margin-top: 28px; padding: 14px; background: none;
+border: 1px solid var(--border); color: var(--muted);
+font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 3px;
+text-transform: uppercase; cursor: pointer; border-radius: 6px; transition: all 0.15s;
+}
+.reset-btn:hover { border-color: var(--muted); color: var(--text); }
+
+/* ── QUOTE MANAGER ── */
+.quote-manage-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-size: 12px;
+}
+.quote-manage-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ── MODAL ── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 1000;
+  padding: 20px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; padding-top: 60px; }
+.modal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  max-width: 420px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.modal-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: color 0.15s;
+}
+.modal-close:hover { color: var(--text); }
+.quote-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+.quote-list-text {
+  flex: 1;
+  font-size: 12px;
+  color: var(--text);
+  line-height: 1.4;
+  font-family: 'Space Mono', monospace;
+}
+.quote-delete-btn {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 2px 6px;
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+.quote-delete-btn:hover { color: var(--fail); }
+.quote-add-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+.quote-add-input {
+  flex: 1;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 12px;
+  color: var(--text);
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  outline: none;
+}
+.quote-add-input::placeholder { color: var(--border); }
+.quote-add-input:focus { border-color: var(--accent); }
+.quote-add-btn {
+  background: rgba(38,255,38,0.08);
+  border: 1px solid rgba(38,255,38,0.3);
+  color: var(--accent);
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.quote-add-btn:hover { background: rgba(38,255,38,0.15); }
+
+/* ── PWA INSTALL BANNER ── */
+.pwa-banner {
+  display: none;
+  background: var(--surface);
+  border: 1px solid rgba(38,255,38,0.2);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.pwa-banner.show { display: block; }
+.pwa-banner-text {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 1px;
+  line-height: 1.5;
+}
+.pwa-banner-text strong { color: var(--accent); }
+.pwa-dismiss {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-top: 6px;
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="logo">money.printer — v99</div>
+      <h1>PRE-TRADE<br>CHECKLIST</h1>
+      <div class="subtitle">// complete before touching order screen</div>
+    </div>
+    <div style="text-align:right">
+      <div class="score-display" id="totalScore">0</div>
+      <div class="score-label">total score</div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV TABS -->
+<div class="nav-tabs">
+  <button class="nav-tab active" onclick="switchView('checklist', this)"><svg width="13" height="13" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" style="display:inline-block;vertical-align:middle;margin-right:4px"><rect x="5" y="1" width="10" height="3" rx="1"/><rect x="3" y="3" width="14" height="15" rx="1.5"/><line x1="6" y1="8" x2="14" y2="8"/><line x1="6" y1="11" x2="14" y2="11"/><line x1="6" y1="14" x2="11" y2="14"/></svg>Checklist</button>
+  <button class="nav-tab ghost-tab" onclick="switchView('ghost', this)"><svg width="13" height="13" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 2.5" style="display:inline-block;vertical-align:middle;margin-right:4px"><circle cx="10" cy="10" r="7.5"/></svg>Ghost Trade</button>
+  <button class="nav-tab log-tab" onclick="switchView('log', this)"><svg width="13" height="13" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" style="display:inline-block;vertical-align:middle;margin-right:4px"><circle cx="10" cy="11" r="7"/><polyline points="10,8 10,11 12.5,13"/><polyline points="10,4 10,1"/><polyline points="7,2 10,0 13,2"/></svg>Trade Log</button>
+</div>
+
+<!-- CHECKLIST VIEW -->
+<div class="view active" id="view-checklist">
+
+<!-- PWA INSTALL HINT -->
+<div class="pwa-banner" id="pwaBanner">
+  <div class="pwa-banner-text">
+    <strong>Install as app:</strong> tap <strong>Share</strong> → <strong>Add to Home Screen</strong>
+  </div>
+  <button class="pwa-dismiss" onclick="dismissPWA()">dismiss</button>
+</div>
+
+<!-- ROTATING QUOTE -->
+<div class="quote-ticker" style="position:relative">
+  <div class="quote-tag">// mindset</div>
+  <div class="quote-text" id="quoteText">My only job is to execute when my edge is present.</div>
+  <div class="quote-dots" id="quoteDots"></div>
+  <button class="quote-manage-btn" onclick="openQuoteManager()" title="Manage quotes">
+    <svg width="12" height="12" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="6" x2="17" y2="6"/><line x1="3" y1="10" x2="17" y2="10"/><line x1="3" y1="14" x2="17" y2="14"/><circle cx="7" cy="6" r="1.5" fill="currentColor"/><circle cx="13" cy="10" r="1.5" fill="currentColor"/><circle cx="9" cy="14" r="1.5" fill="currentColor"/></svg>
+  </button>
+</div>
+
+<!-- LOSS STREAK PROTOCOL — gates everything below -->
+<div class="loss-protocol-wrap" id="lossProtocolWrap">
+  <div class="preflight-header">
+    <span class="preflight-title"><svg width="12" height="12" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" style="display:inline-block;vertical-align:middle;margin-right:4px;color:var(--fail)"><circle cx="10" cy="10" r="8.5"/><line x1="10" y1="5" x2="10" y2="11"/><circle cx="10" cy="14" r="0.8" fill="currentColor"/></svg>Loss Streak Protocol</span>
+    <span class="gate-status unlocked" id="lossGateStatus">CLEAR</span>
+  </div>
+  <div class="loss-dots">
+    <div class="loss-dot l1">1</div>
+    <div class="loss-dot l1">2</div>
+    <div class="loss-dot l2">3</div>
+    <div class="loss-dot l2">4</div>
+    <div class="loss-dot l2">5</div>
+    <div class="loss-dot l2">6</div>
+    <div class="loss-dot l2">7</div>
+    <div class="loss-dot l2">8</div>
+    <div class="loss-dot l2">9</div>
+  </div>
+  <div class="loss-rule-row" id="rule2"><div class="loss-indicator"></div><div class="loss-rule-text">2 losses today → done for the day. reevaluate tomorrow.</div></div>
+  <div class="loss-rule-row" id="rule3"><div class="loss-indicator"></div><div class="loss-rule-text">3 in a row → day off. reset mentally.</div></div>
+  <div class="loss-rule-row" id="rule6"><div class="loss-indicator"></div><div class="loss-rule-text">6 in a row → 3 days off. review every trade.</div></div>
+  <div class="loss-rule-row" id="rule9"><div class="loss-indicator"></div><div class="loss-rule-text">9 in a row → full week off. something is off. fix it first.</div></div>
+  <div class="countdown-display hidden" id="lockCountdown"></div>
+</div>
+
+<!-- LOSS LOCK MESSAGE -->
+<div class="lock-message hidden" id="lossLockMsg">loss protocol active — step away</div>
+
+<!-- EVERYTHING BELOW GETS LOCKED BY LOSS PROTOCOL -->
+<div id="belowLossGate">
+
+<!-- PRE-FLIGHT GATE -->
+<div class="preflight-wrap">
+  <div class="preflight-header">
+    <span class="preflight-title"><svg width="12" height="12" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" style="display:inline-block;vertical-align:middle;margin-right:4px;color:var(--muted)"><polygon points="10,1 18,5.5 18,14.5 10,19 2,14.5 2,5.5"/></svg>Pre-Flight Gate</span>
+    <span class="gate-status locked" id="gateStatus">LOCKED</span>
+  </div>
+
+  <div class="preflight-item" onclick="togglePreflight(this)">
+    <div class="pf-box"></div>
+    <div>
+      <div class="pf-text">Emotions dialed?</div>
+      <div class="pf-note">if compromised — tired, emotional, or distracted: no trade</div>
+    </div>
+  </div>
+  <div class="preflight-item" onclick="togglePreflight(this)">
+    <div class="pf-box"></div>
+    <div>
+      <div class="pf-text">Not revenge trading</div>
+      <div class="pf-note">last loss is closed. this is a new trade.</div>
+    </div>
+  </div>
+  <div class="preflight-item" onclick="togglePreflight(this)">
+    <div class="pf-box"></div>
+    <div>
+      <div class="pf-text">Not chasing a missed move</div>
+      <div class="pf-note">if the setup is gone, it's gone. next one.</div>
+    </div>
+  </div>
+  <div class="preflight-item" onclick="togglePreflight(this)">
+    <div class="pf-box"></div>
+    <div>
+      <div class="pf-text">No major news event actively printing</div>
+      <div class="pf-note">CPI, FOMC, black swan — don't trade into a spike</div>
+    </div>
+  </div>
+</div>
+
+<!-- LOCK MESSAGE -->
+<div class="lock-message" id="lockMsg">pass pre-flight to unlock checklist</div>
+
+<!-- MAIN CHECKLIST -->
+<div class="checklist-body locked" id="checklistBody">
+
+  <!-- MODE TOGGLE -->
+  <div class="mode-toggle">
+    <button class="mode-btn active" id="swingBtn" onclick="setMode('swing')"><svg width="13" height="13" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" style="display:inline-block;vertical-align:middle;margin-right:5px"><polyline points="1,15 7,9 12,13 19,4"/><polyline points="14,4 19,4 19,9"/></svg>SWING</button>
+    <button class="mode-btn" id="scalpBtn" onclick="setMode('scalp')"><svg width="13" height="13" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" style="display:inline-block;vertical-align:middle;margin-right:5px"><line x1="5" y1="2" x2="5" y2="5"/><rect x="3" y="5" width="4" height="7" rx="0.5"/><line x1="5" y1="12" x2="5" y2="16"/><line x1="13" y1="4" x2="13" y2="7"/><rect x="11" y="7" width="4" height="6" rx="0.5"/><line x1="13" y1="13" x2="13" y2="18"/></svg>SCALP</button>
+  </div>
+  <div class="mode-indicator swing" id="modeIndicator">SWING MODE — multi-day / positional</div>
+
+  <!-- ASSET -->
+  <div style="position:relative;margin-bottom:24px">
+    <label class="input-label">Asset</label>
+    <div class="asset-row" id="assetRow" style="margin-bottom:0;margin-top:5px"></div>
+    <button class="quote-manage-btn" onclick="openAssetManager()" title="Manage assets" style="position:absolute;top:0;right:0">
+      <svg width="10" height="10" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
+    </button>
+  </div>
+
+  <!-- DIRECTION -->
+  <div class="journal-row" style="margin-bottom:16px">
+    <label class="input-label">Direction</label>
+    <div class="journal-toggle-row" id="directionRow">
+      <button class="journal-pill long-pill" onclick="setDirection(this,'long')" style="flex:1;text-align:center">Long</button>
+      <button class="journal-pill short-pill" onclick="setDirection(this,'short')" style="flex:1;text-align:center">Short</button>
+    </div>
+  </div>
+
+  <!-- SESSION -->
+  <div class="journal-row" style="margin-bottom:16px">
+    <label class="input-label">Session</label>
+    <div class="journal-toggle-row" id="sessionRow">
+      <button class="journal-pill ny-pill" onclick="setPill(this,'session')">New York</button>
+      <button class="journal-pill ldn-pill" onclick="setPill(this,'session')">London</button>
+      <button class="journal-pill asia-pill" onclick="setPill(this,'session')">Asia</button>
+      <button class="journal-pill wknd-pill" onclick="setPill(this,'session')">Weekend</button>
+    </div>
+  </div>
+
+  <!-- ENTRY TIMEFRAME -->
+  <div class="journal-row" style="margin-bottom:24px">
+    <label class="input-label">Entry Timeframe</label>
+    <div class="journal-toggle-row" id="tfRow"></div>
+  </div>
+
+  <!-- SWING ONLY -->
+  <div class="section swing-only">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <span class="section-title">Market Context</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="checkbox"></div>
+      <div>
+        <div class="check-text">Macro narrative this week is clear</div>
+        <div class="check-note">news, fed, geopolitics</div>
+      </div>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="checkbox"></div>
+      <div>
+        <div class="check-text">Up to date on data releases</div>
+        <div class="check-note">CPI, NFP, FOMC dates on radar</div>
+      </div>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="checkbox"></div>
+      <div><div class="check-text">Broader market trend understood — S&amp;P, Total3 mcap</div></div>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="checkbox"></div>
+      <div>
+        <div class="check-text">DXY daily/weekly bias identified</div>
+        <div class="check-note">risk-on or risk-off?</div>
+      </div>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="checkbox"></div>
+      <div><div class="check-text">Trade aligns with macro? If not, why?</div></div>
+    </div>
+  </div>
+
+  <div class="section swing-only">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <span class="section-title">Multi-Timeframe Bias</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="checkbox"></div>
+      <div>
+        <div class="check-text">Monthly &amp; weekly bias set</div>
+        <div class="check-note">where are we in the 4-year cycle?</div>
+      </div>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="checkbox"></div>
+      <div><div class="check-text">Daily confirmed &amp; aligns with weekly</div></div>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="checkbox"></div>
+      <div><div class="check-text">4H aligned with daily &amp; above</div></div>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="checkbox"></div>
+      <div>
+        <div class="check-text">HTF conflict? Written down why I'm still entering</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section swing-only">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <span class="section-title">HTF Confluence <span style="color:var(--muted);font-size:10px;font-family:'Space Mono',monospace;letter-spacing:1px;font-weight:400">— 5+ to trade</span></span>
+    </div>
+    <div class="divider-label">Primary signals</div>
+    <div class="confluence-grid" id="htfGrid">
+      <div class="conf-item" onclick="toggleConf(this,'htf')"><div class="conf-dot"></div><div class="conf-label">Key S/R level</div></div>
+      <div class="conf-item" onclick="toggleConf(this,'htf')"><div class="conf-dot"></div><div class="conf-label">Fib confluence</div></div>
+      <div class="conf-item" onclick="toggleConf(this,'htf')"><div class="conf-dot"></div><div class="conf-label">Stoch RSI signal</div></div>
+      <div class="conf-item" onclick="toggleConf(this,'htf')"><div class="conf-dot"></div><div class="conf-label">MACD cross/div</div></div>
+      <div class="conf-item" onclick="toggleConf(this,'htf')"><div class="conf-dot"></div><div class="conf-label">RSI divergence</div></div>
+      <div class="conf-item" onclick="toggleConf(this,'htf')"><div class="conf-dot"></div><div class="conf-label">Volume confirm</div></div>
+      <div class="conf-item" onclick="toggleConf(this,'htf')"><div class="conf-dot"></div><div class="conf-label">Bollinger Bands</div></div>
+      <div class="conf-item" onclick="toggleConf(this,'htf')"><div class="conf-dot"></div><div class="conf-label">CME gap nearby</div></div>
+      <div class="conf-item" onclick="toggleConf(this,'htf')"><div class="conf-dot"></div><div class="conf-label">BMB interaction</div></div>
+      <div class="conf-item" onclick="toggleConf(this,'htf')"><div class="conf-dot"></div><div class="conf-label">Pattern present</div></div>
+      <div class="conf-item" onclick="toggleConf(this,'htf')"><div class="conf-dot"></div><div class="conf-label">Williams %R</div></div>
+      <div class="conf-item" onclick="toggleConf(this,'htf')"><div class="conf-dot"></div><div class="conf-label">VRVP level</div></div>
+    </div>
+    <div class="divider-label" style="margin-top:10px">Complementary context</div>
+    <div class="context-grid">
+      <div class="context-item" onclick="toggleContext(this)"><div class="context-dot"></div><div class="context-label">VWAP</div></div>
+      <div class="context-item" onclick="toggleContext(this)"><div class="context-dot"></div><div class="context-label">50 SMA</div></div>
+      <div class="context-item" onclick="toggleContext(this)"><div class="context-dot"></div><div class="context-label">ATR range</div></div>
+      <div class="context-item" onclick="toggleContext(this)"><div class="context-dot"></div><div class="context-label">Candlestick sig</div></div>
+    </div>
+    <div class="score-bar-wrap">
+      <div class="csb-top">
+        <span class="csb-label">HTF Confluence</span>
+        <span class="csb-num" id="htfScore" style="color:var(--fail)">0 / 12</span>
+      </div>
+      <div class="bar-track"><div class="bar-fill" id="htfBar" style="width:0%;background:var(--fail)"></div></div>
+    </div>
+  </div>
+
+  <!-- SCALP ONLY -->
+  <div class="section scalp-only">
+    <div class="section-header">
+      <span class="section-num scalp">01</span>
+      <span class="section-title">Quick Context</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="checkbox"></div>
+      <div>
+        <div class="check-text">HTF bias known — not blindly trading against the daily</div>
+      </div>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="checkbox"></div>
+      <div>
+        <div class="check-text">Session identified — NY, London, Asia overlap?</div>
+        <div class="check-note">volatility expectations set</div>
+      </div>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="checkbox"></div>
+      <div><div class="check-text">No major news actively printing</div></div>
+    </div>
+  </div>
+
+  <div class="section scalp-only">
+    <div class="section-header">
+      <span class="section-num scalp">02</span>
+      <span class="section-title">LTF Confluence <span style="color:var(--muted);font-size:10px;font-family:'Space Mono',monospace;letter-spacing:1px;font-weight:400">— 3+ to trade</span></span>
+    </div>
+    <div class="divider-label">Structure signals (1m–15m)</div>
+    <div class="confluence-grid" id="ltfGrid">
+      <div class="conf-item ltf-conf" onclick="toggleConf(this,'ltf')"><div class="conf-dot"></div><div class="conf-label">CHoCH confirmed</div></div>
+      <div class="conf-item ltf-conf" onclick="toggleConf(this,'ltf')"><div class="conf-dot"></div><div class="conf-label">Break of structure</div></div>
+      <div class="conf-item ltf-conf" onclick="toggleConf(this,'ltf')"><div class="conf-dot"></div><div class="conf-label">Key S/R interaction</div></div>
+      <div class="conf-item ltf-conf" onclick="toggleConf(this,'ltf')"><div class="conf-dot"></div><div class="conf-label">Fib level hit</div></div>
+      <div class="conf-item ltf-conf" onclick="toggleConf(this,'ltf')"><div class="conf-dot"></div><div class="conf-label">Volume spike</div></div>
+      <div class="conf-item ltf-conf" onclick="toggleConf(this,'ltf')"><div class="conf-dot"></div><div class="conf-label">Liquidity sweep</div></div>
+      <div class="conf-item ltf-conf" onclick="toggleConf(this,'ltf')"><div class="conf-dot"></div><div class="conf-label">3 or 4 bar play</div></div>
+      <div class="conf-item ltf-conf" onclick="toggleConf(this,'ltf')"><div class="conf-dot"></div><div class="conf-label">Pattern present</div></div>
+      <div class="conf-item ltf-conf" onclick="toggleConf(this,'ltf')"><div class="conf-dot"></div><div class="conf-label">Stoch RSI LTF</div></div>
+      <div class="conf-item ltf-conf" onclick="toggleConf(this,'ltf')"><div class="conf-dot"></div><div class="conf-label">MACD LTF signal</div></div>
+      <div class="conf-item ltf-conf" onclick="toggleConf(this,'ltf')"><div class="conf-dot"></div><div class="conf-label">Momentum shift</div></div>
+      <div class="conf-item ltf-conf" onclick="toggleConf(this,'ltf')"><div class="conf-dot"></div><div class="conf-label">VWAP reclaim/reject</div></div>
+    </div>
+    <div class="score-bar-wrap">
+      <div class="csb-top">
+        <span class="csb-label">LTF Confluence</span>
+        <span class="csb-num" id="ltfScore" style="color:var(--fail)">0 / 12</span>
+      </div>
+      <div class="bar-track"><div class="bar-fill" id="ltfBar" style="width:0%"></div></div>
+    </div>
+  </div>
+
+  <!-- SHARED SECTIONS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num" id="entryNum">04</span>
+      <span class="section-title">Entry Criteria</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="checkbox"></div>
+      <div><div class="check-text">Invalidation level identified</div></div>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="checkbox"></div>
+      <div><div class="check-text">Entry level identified</div></div>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="checkbox"></div>
+      <div>
+        <div class="check-text">Target price identified</div>
+        <div class="check-note">all three set before touching the order screen</div>
+      </div>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="checkbox"></div>
+      <div><div class="check-text">Limit or market order? Why?</div></div>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="checkbox"></div>
+      <div><div class="check-text">Candle confirmation received OR anticipating — sized accordingly</div></div>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="checkbox"></div>
+      <div>
+        <div class="check-text">Setup is there — not recovering losses, not bored
+          <span class="tag tag-hard">HARD</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num" id="riskNum">05</span>
+      <span class="section-title">Risk Management</span>
+    </div>
+    <div class="risk-inputs">
+      <div class="input-group">
+        <label class="input-label">Position Size $</label>
+        <input type="number" id="posSize" placeholder="250" oninput="calcRR()">
+      </div>
+      <div class="input-group">
+        <label class="input-label">Stop Loss $</label>
+        <input type="number" id="stopAmt" placeholder="60" oninput="calcRR()">
+      </div>
+      <div class="input-group">
+        <label class="input-label">TP Target $ <span style="color:var(--accent);font-size:9px;letter-spacing:1px">(profit only)</span></label>
+        <input type="number" id="tpAmt" placeholder="200" oninput="calcRR()">
+      </div>
+      <div class="input-group">
+        <label class="input-label">Leverage</label>
+        <input type="number" id="leverage" placeholder="20" oninput="calcRR()">
+      </div>
+    </div>
+    <div class="rr-display">
+      <span class="rr-label">R : R Ratio</span>
+      <span class="rr-value" id="rrValue">— : 1</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="checkbox"></div>
+      <div><div class="check-text">Stop placed at structure — not arbitrary</div></div>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="checkbox"></div>
+      <div>
+        <div class="check-text">R:R minimum 3:1 — if not, adjust or skip
+          <span class="tag tag-hard">HARD</span>
+        </div>
+      </div>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="checkbox"></div>
+      <div>
+        <div class="check-text" id="levText">Leverage appropriate — swings &#8804; 35x</div>
+        <div class="check-note" id="levNote">higher lev only on tight-stop LTF plays</div>
+      </div>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="checkbox"></div>
+      <div>
+        <div class="check-text">Stop is non-negotiable once set
+          <span class="tag tag-hard">HARD</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num" id="mgmtNum">06</span>
+      <span class="section-title">Trade Management</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="checkbox"></div>
+      <div><div class="check-text">Alert set at 50% drawdown</div></div>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="checkbox"></div>
+      <div>
+        <div class="check-text">Alert set at TP — reassess when hit: close or let it ride?</div>
+        <div class="check-note">if structure holds &amp; momentum is there, trail &amp; hold</div>
+      </div>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="checkbox"></div>
+      <div>
+        <div class="check-text">Alerts set — walk away
+          <span class="tag tag-exec">EXECUTE</span>
+        </div>
+        <div class="check-note">best trades happen when you stop watching</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num" id="gcNum">07</span>
+      <span class="section-title">Ground Control</span>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="checkbox"></div>
+      <div>
+        <div class="check-text">Would I take this trade if I had to walk away for 4 hours right after?</div>
+        <div class="check-note">if no — not confident enough. don't enter.</div>
+      </div>
+    </div>
+    <div class="check-item" onclick="toggleCheck(this)">
+      <div class="checkbox"></div>
+      <div>
+        <div class="check-text">Calm, centered, focused — not proving anything</div>
+        <div class="check-note">below 7/10 = mandatory pause</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num" id="exitNum">08</span>
+      <span class="section-title">Exit Plan</span>
+    </div>
+    <div class="risk-inputs" style="margin-bottom:12px">
+      <div class="input-group">
+        <label class="input-label">Entry Price</label>
+        <input type="text" id="exitEntryPrice" placeholder="e.g. 2,045.50">
+      </div>
+      <div class="input-group" id="exitTPWrap">
+        <label class="input-label">TP / Exit Price</label>
+        <input type="text" id="exitTPPrice" placeholder="e.g. 2,200">
+      </div>
+    </div>
+    <div class="journal-row" style="margin-bottom:12px">
+      <label class="input-label">Exit Strategy</label>
+      <div class="journal-toggle-row" id="exitStratRow">
+        <button class="journal-pill" onclick="setExitStrategy('full')">Full Close</button>
+        <button class="journal-pill" onclick="setExitStrategy('partial')">Partial TPs</button>
+        <button class="journal-pill" onclick="setExitStrategy('trail')">Trailing Stop</button>
+      </div>
+    </div>
+    <div id="exitDetails" style="display:none">
+      <div id="partialFields" style="display:none">
+        <div class="risk-inputs" id="tpFieldsGrid">
+          <div class="input-group">
+            <label class="input-label">TP1</label>
+            <input type="text" class="tp-field" placeholder="e.g. 2,200">
+          </div>
+          <div class="input-group">
+            <label class="input-label">TP2</label>
+            <input type="text" class="tp-field" placeholder="e.g. 2,400">
+          </div>
+        </div>
+        <button style="background:none;border:1px dashed var(--border);color:var(--muted);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;padding:8px;width:100%;border-radius:6px;cursor:pointer;margin-top:6px;margin-bottom:8px;transition:all 0.15s" onclick="addTPField()" onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">+ ADD TP LEVEL</button>
+        <div class="check-item" id="partialTrailCheck" onclick="toggleCheck(this)">
+          <div class="checkbox"></div>
+          <div>
+            <div class="check-text">Trail remainder after TP1?</div>
+            <div class="check-note">move stop to BE after TP1 hit, trail rest behind structure</div>
+          </div>
+        </div>
+      </div>
+      <div class="check-item" id="trailCheck" onclick="toggleCheck(this)" style="display:none">
+        <div class="checkbox"></div>
+        <div>
+          <div class="check-text">Trail stop plan defined</div>
+          <div class="check-note">move stop to BE after initial target, trail behind structure</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="verdict-box" id="verdictBox" onclick="toggleTradeJournal()">
+    <div class="verdict-text" id="verdictText">COMPLETE CHECKLIST</div>
+    <div class="verdict-sub" id="verdictSub">fill out all sections above</div>
+    <div class="verdict-hint" id="verdictHint" style="display:none">tap to open journal</div>
+  </div>
+
+  <!-- JOURNAL EXPANDS BELOW EXECUTE -->
+  <div class="journal-expand" id="journalExpand">
+    <div class="journal-inner">
+      <div class="journal-header">
+        <span class="journal-icon" style="background:rgba(255,107,53,0.1)"><svg width="12" height="12" viewBox="0 0 20 20" fill="none" stroke="var(--accent2)" stroke-width="1.5"><path d="M14 1.5 L17.5 5 L7 15.5 L3 16.5 L4 12.5 Z"/><line x1="12" y1="3.5" x2="15.5" y2="7"/></svg></span>
+        <span class="journal-title-label">Post-Trade Journal</span>
+      </div>
+      <div class="timer-badge" id="tradeTimer"><div class="timer-dot"></div><span id="tradeTimerText">TRADE OPEN — 0h 00m 00s</span></div>
+
+      <div id="sec-journal">
+        <div class="journal-inputs">
+          <div class="input-group"><label class="input-label">Exit Price</label><input type="text" id="journalExitPrice" placeholder="fill when closing"></div>
+          <div class="input-group"><label class="input-label">PnL $</label><input type="text" id="journalPnL" placeholder="e.g. +$185"></div>
+        </div>
+        <div class="journal-inputs">
+          <div class="input-group"><label class="input-label">R:R Achieved</label><input type="text" id="journalRR" placeholder="e.g. 4.2 : 1"></div>
+        </div>
+        <div class="journal-row"><label class="input-label">Outcome</label>
+          <div class="journal-toggle-row">
+            <button class="journal-pill win-pill" onclick="setPill(this,'outcome')">Win</button>
+            <button class="journal-pill loss-pill" onclick="setPill(this,'outcome')">Loss</button>
+            <button class="journal-pill" onclick="setPill(this,'outcome')">Breakeven</button>
+          </div>
+        </div>
+        <div class="journal-row"><label class="input-label">Rules &amp; Strategy Followed?</label>
+          <div class="journal-toggle-row">
+            <button class="journal-pill yes-pill" onclick="setPill(this,'rules')">Yes</button>
+            <button class="journal-pill loss-pill" onclick="setPill(this,'rules')">No</button>
+            <button class="journal-pill" onclick="setPill(this,'rules')">Partially</button>
+          </div>
+        </div>
+        <div class="input-group journal-textarea-wrap"><label class="input-label">Reasoning for Trade</label><textarea id="journalReasoning" placeholder="PA thesis, setup, confluence points..." rows="3"></textarea></div>
+        <div class="input-group journal-textarea-wrap"><label class="input-label">Emotions During &amp; After</label><textarea id="journalEmotions" placeholder="calm, anxious, impatient, confident..." rows="2"></textarea></div>
+        <div class="input-group journal-textarea-wrap"><label class="input-label">Reflection — Lessons Learned</label><textarea id="journalReflection" placeholder="what would you do differently?" rows="3"></textarea></div>
+        <button class="save-btn journal-save" onclick="saveTradeEntry()">$ CLOSE TRADE &amp; SAVE</button>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end checklist-body -->
+
+</div><!-- end belowLossGate -->
+
+<button class="reset-btn" onclick="resetAll()">RESET CHECKLIST</button>
+
+</div><!-- end view-checklist -->
+
+<!-- GHOST TRADE VIEW -->
+<div class="view" id="view-ghost">
+  <div class="ghost-log-wrap">
+    <div class="section-header" style="margin-bottom:16px">
+      <span class="section-num scalp">&#9676;</span>
+      <span class="section-title">Ghost Trade Log</span>
+    </div>
+    <div class="ghost-form">
+
+      <div class="input-group ghost-form" style="margin-bottom:8px">
+        <label class="input-label">Date &amp; Time</label>
+        <input type="text" id="ghostDate" placeholder="auto-filled on save">
+      </div>
+
+      <div class="journal-row">
+        <label class="input-label" style="display:flex;justify-content:space-between;align-items:center">Asset <button style="background:none;border:1px solid var(--border);color:var(--muted);width:20px;height:20px;border-radius:3px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;transition:all 0.15s" onclick="openAssetManager()">+</button></label>
+        <div class="journal-toggle-row" id="ghostAssetRow"></div>
+      </div>
+
+      <div class="journal-row">
+        <label class="input-label">Trade Type</label>
+        <div class="journal-toggle-row">
+          <button class="journal-pill active" onclick="setPill(this,'g-type')">Swing</button>
+          <button class="journal-pill" onclick="setPill(this,'g-type')">Scalp</button>
+        </div>
+      </div>
+
+      <div class="journal-row">
+        <label class="input-label">Direction</label>
+        <div class="journal-toggle-row">
+          <button class="journal-pill long-pill" onclick="setPill(this,'g-dir')">Long</button>
+          <button class="journal-pill short-pill" onclick="setPill(this,'g-dir')">Short</button>
+        </div>
+      </div>
+
+      <div class="journal-row">
+        <label class="input-label">Session</label>
+        <div class="journal-toggle-row">
+          <button class="journal-pill ny-pill" onclick="setPill(this,'g-session')">New York</button>
+          <button class="journal-pill ldn-pill" onclick="setPill(this,'g-session')">London</button>
+          <button class="journal-pill asia-pill" onclick="setPill(this,'g-session')">Asia</button>
+          <button class="journal-pill wknd-pill" onclick="setPill(this,'g-session')">Weekend</button>
+        </div>
+      </div>
+
+      <div class="input-group ghost-form" style="margin-bottom:8px">
+        <label class="input-label">What did you see?</label>
+        <textarea id="ghostSawField" placeholder="setup, confluence, pattern, structure..." rows="3"></textarea>
+      </div>
+
+      <div class="input-group ghost-form" style="margin-bottom:8px">
+        <label class="input-label">What stopped you from entering?</label>
+        <textarea id="ghostStoppedField" placeholder="hesitation, unclear SL, bad R:R, missed entry..." rows="3"></textarea>
+      </div>
+
+      <div class="input-group ghost-form" style="margin-bottom:8px">
+        <label class="input-label">Did it play out? How far did it move?</label>
+        <textarea id="ghostResultField" placeholder="e.g. moved 8% in my direction, hit target, reversed early..." rows="2"></textarea>
+      </div>
+
+      <div class="input-group ghost-form" style="margin-bottom:8px">
+        <label class="input-label">Reflection — What did this cost you?</label>
+        <textarea id="ghostReflection" placeholder="estimated R, what you'd do differently next time..." rows="2"></textarea>
+      </div>
+
+      <button class="save-btn" onclick="saveGhost()">&#9676; SAVE GHOST ENTRY</button>
+    </div>
+  </div>
+</div><!-- end view-ghost -->
+
+<!-- TRADE LOG VIEW -->
+<div class="view" id="view-log">
+  <div class="section-header" style="margin-bottom:16px">
+    <span class="section-num" style="display:inline-flex;align-items:center;padding:3px 7px"><svg width="12" height="12" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,14 6,9 10,11 14,5 18,7"/><circle cx="18" cy="7" r="1.5" fill="currentColor"/></svg></span>
+    <span class="section-title">Trade Log</span>
+  </div>
+  <!-- STATS DASHBOARD -->
+  <div id="statsDashboard"></div>
+  <div id="logEntries"></div>
+</div><!-- end view-log -->
+
+<script>
+  // DEFAULT QUOTES
+  const defaultQuotes = [
+    "Greed is poison.",
+    "The present moment \"feels\" right. Data is infallible.",
+    "My only job is to execute when my edge is present.",
+    "Every correction is an overcorrection.",
+    "Price action is king.",
+    "Know when to display courage.",
+  ];
+
+  // LOAD QUOTES FROM STORAGE OR USE DEFAULTS
+  function getQuotes() {
+    try {
+      const stored = localStorage.getItem('edgelog_quotes');
+      if (stored) return JSON.parse(stored);
+    } catch {}
+    return [...defaultQuotes];
+  }
+  function saveQuotes(arr) {
+    try { localStorage.setItem('edgelog_quotes', JSON.stringify(arr)); } catch {}
+  }
+
+  let quotes = getQuotes();
+  let currentQuote = 0;
+  let quoteInterval = null;
+
+  function setPill(el, group) {
+    el.closest('.journal-toggle-row').querySelectorAll('.journal-pill').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  function initQuotes() {
+    rebuildQuoteDots();
+    showQuote(0);
+    startQuoteRotation();
+  }
+
+  function rebuildQuoteDots() {
+    const dots = document.getElementById('quoteDots');
+    dots.innerHTML = '';
+    quotes.forEach((_, i) => {
+      const d = document.createElement('div');
+      d.className = 'quote-dot' + (i === currentQuote ? ' active' : '');
+      d.onclick = () => showQuote(i);
+      dots.appendChild(d);
+    });
+  }
+
+  function startQuoteRotation() {
+    if (quoteInterval) clearInterval(quoteInterval);
+    quoteInterval = setInterval(() => {
+      if (quotes.length > 0) showQuote((currentQuote + 1) % quotes.length);
+    }, 6000);
+  }
+
+  function showQuote(i) {
+    if (quotes.length === 0) return;
+    currentQuote = i % quotes.length;
+    const el = document.getElementById('quoteText');
+    el.style.opacity = 0;
+    setTimeout(() => {
+      el.textContent = quotes[currentQuote];
+      el.style.opacity = 1;
+    }, 200);
+    document.querySelectorAll('.quote-dot').forEach((d, idx) => {
+      d.classList.toggle('active', idx === currentQuote);
+    });
+  }
+
+  // QUOTE MANAGER
+  function openQuoteManager() {
+    renderQuoteList();
+    document.getElementById('quoteModal').classList.add('open');
+  }
+
+  function closeQuoteManager() {
+    document.getElementById('quoteModal').classList.remove('open');
+    // Refresh the ticker with updated quotes
+    quotes = getQuotes();
+    currentQuote = 0;
+    rebuildQuoteDots();
+    if (quotes.length > 0) showQuote(0);
+    startQuoteRotation();
+  }
+
+  function renderQuoteList() {
+    const list = document.getElementById('quoteList');
+    const q = getQuotes();
+    if (!q.length) {
+      list.innerHTML = '<div style="text-align:center;padding:20px;font-family:\'Space Mono\',monospace;font-size:11px;color:var(--muted)">// no quotes yet</div>';
+      return;
+    }
+    list.innerHTML = q.map((text, i) => `
+      <div class="quote-list-item">
+        <div class="quote-list-text">${text}</div>
+        <button class="quote-delete-btn" onclick="deleteQuote(${i})">&times;</button>
+      </div>
+    `).join('');
+  }
+
+  function addQuote() {
+    const input = document.getElementById('newQuoteInput');
+    const text = input.value.trim();
+    if (!text) return;
+    const q = getQuotes();
+    q.push(text);
+    saveQuotes(q);
+    input.value = '';
+    renderQuoteList();
+  }
+
+  function deleteQuote(i) {
+    const q = getQuotes();
+    q.splice(i, 1);
+    saveQuotes(q);
+    renderQuoteList();
+  }
+
+  // PWA INSTALL HINT
+  function checkPWAHint() {
+    try {
+      const dismissed = localStorage.getItem('edgelog_pwa_dismissed');
+      // Show hint if on iOS Safari and not already installed as PWA
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+      const isStandalone = window.navigator.standalone === true;
+      if (isIOS && !isStandalone && !dismissed) {
+        document.getElementById('pwaBanner').classList.add('show');
+      }
+    } catch {}
+  }
+
+  function dismissPWA() {
+    document.getElementById('pwaBanner').classList.remove('show');
+    try { localStorage.setItem('edgelog_pwa_dismissed', 'true'); } catch {}
+  }
+
+  // PRE-FLIGHT GATE
+  let preflightCount = 0;
+  const totalPreflight = 4;
+
+  function togglePreflight(el) {
+    const wrap = document.querySelector('.preflight-wrap');
+    if (wrap.classList.contains('sealed')) return;
+    el.classList.toggle('cleared');
+    preflightCount = document.querySelectorAll('.preflight-item.cleared').length;
+    const allClear = preflightCount === totalPreflight;
+    const body = document.getElementById('checklistBody');
+    const msg = document.getElementById('lockMsg');
+    const status = document.getElementById('gateStatus');
+
+    if (allClear) {
+      body.classList.remove('locked');
+      msg.classList.add('hidden');
+      status.textContent = 'CLEARED';
+      status.className = 'gate-status unlocked';
+      wrap.classList.add('sealed');
+    } else {
+      body.classList.add('locked');
+      msg.classList.remove('hidden');
+      status.textContent = 'LOCKED';
+      status.className = 'gate-status locked';
+    }
+  }
+
+  // MODE
+  let currentMode = 'swing';
+  let htfCount = 0, ltfCount = 0, lossCount = 0;
+  const swingChecks = 24, scalpChecks = 18;
+
+  function setMode(mode) {
+    currentMode = mode;
+    const swingBtn = document.getElementById('swingBtn');
+    const scalpBtn = document.getElementById('scalpBtn');
+    const indicator = document.getElementById('modeIndicator');
+
+    if (mode === 'swing') {
+      swingBtn.classList.add('active'); swingBtn.classList.remove('scalp-active');
+      scalpBtn.classList.remove('active', 'scalp-active');
+      indicator.textContent = 'SWING MODE \u2014 multi-day / positional';
+      indicator.className = 'mode-indicator swing';
+      document.querySelectorAll('.swing-only').forEach(el => el.style.display = 'block');
+      document.querySelectorAll('.scalp-only').forEach(el => el.style.display = 'none');
+      document.getElementById('entryNum').textContent = '04';
+      document.getElementById('riskNum').textContent = '05';
+      document.getElementById('mgmtNum').textContent = '06';
+      document.getElementById('gcNum').textContent = '07';
+      var en = document.getElementById('exitNum'); if(en) en.textContent = '08';
+      document.getElementById('levText').textContent = 'Leverage appropriate \u2014 swings \u2264 35x';
+      document.getElementById('levNote').textContent = 'higher lev only on tight-stop LTF plays';
+    } else {
+      scalpBtn.classList.add('active', 'scalp-active');
+      swingBtn.classList.remove('active');
+      indicator.textContent = 'SCALP MODE \u2014 intraday / session play';
+      indicator.className = 'mode-indicator scalp';
+      document.querySelectorAll('.swing-only').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('.scalp-only').forEach(el => el.style.display = 'block');
+      document.getElementById('entryNum').textContent = '03';
+      document.getElementById('riskNum').textContent = '04';
+      document.getElementById('mgmtNum').textContent = '05';
+      document.getElementById('gcNum').textContent = '06';
+      var en2 = document.getElementById('exitNum'); if(en2) en2.textContent = '07';
+      document.getElementById('levText').textContent = 'Leverage appropriate for scalp \u2014 tight stop required';
+      document.getElementById('levNote').textContent = 'higher leverage okay if stop is genuinely tight';
+    }
+    resetChecksOnly();
+    buildTimeframes();
+    updateVerdict();
+  }
+
+  function toggleCheck(el) {
+    el.classList.toggle('checked');
+    updateVerdict(); updateTotal();
+  }
+
+  function toggleConf(el, type) {
+    el.classList.toggle('active');
+    if (type === 'htf') {
+      htfCount = document.querySelectorAll('#htfGrid .conf-item.active').length;
+      updateHTFScore();
+    } else {
+      ltfCount = document.querySelectorAll('#ltfGrid .conf-item.active').length;
+      updateLTFScore();
+    }
+    updateTotal(); updateVerdict();
+  }
+
+  function toggleContext(el) { el.classList.toggle('active'); }
+
+  function updateHTFScore() {
+    const el = document.getElementById('htfScore');
+    const bar = document.getElementById('htfBar');
+    el.textContent = htfCount + ' / 12';
+    bar.style.width = (htfCount / 12 * 100) + '%';
+    const c = htfCount >= 7 ? 'var(--pass)' : htfCount >= 5 ? 'var(--warn)' : 'var(--fail)';
+    el.style.color = c; bar.style.background = c;
+  }
+
+  function updateLTFScore() {
+    const el = document.getElementById('ltfScore');
+    const bar = document.getElementById('ltfBar');
+    el.textContent = ltfCount + ' / 12';
+    bar.style.width = (ltfCount / 12 * 100) + '%';
+    const c = ltfCount >= 5 ? 'var(--accent3)' : ltfCount >= 3 ? 'var(--warn)' : 'var(--fail)';
+    el.style.color = c; bar.style.background = c;
+  }
+
+  function updateTotal() {
+    const checks = document.querySelectorAll('#checklistBody .check-item.checked').length;
+    const conf = currentMode === 'swing' ? htfCount : ltfCount;
+    document.getElementById('totalScore').textContent = checks + conf;
+  }
+
+  function updateVerdict() {
+    const box = document.getElementById('verdictBox');
+    const text = document.getElementById('verdictText');
+    const sub = document.getElementById('verdictSub');
+    const hint = document.getElementById('verdictHint');
+    const checks = document.querySelectorAll('#checklistBody .check-item.checked').length;
+    const total = currentMode === 'swing' ? swingChecks : scalpChecks;
+    const confOk = currentMode === 'swing' ? htfCount >= 5 : ltfCount >= 3;
+    const confStrong = currentMode === 'swing' ? htfCount >= 7 : ltfCount >= 5;
+    box.className = 'verdict-box';
+    if (hint) hint.style.display = 'none';
+
+    if (!confOk) {
+      box.classList.add('no-go');
+      text.textContent = 'NO TRADE';
+      sub.textContent = currentMode === 'swing' ? 'htf confluence below 5' : 'ltf confluence below 3 \u2014 find a cleaner setup';
+    } else if (checks < total) {
+      box.classList.add('warn');
+      text.textContent = 'INCOMPLETE';
+      sub.textContent = (total - checks) + ' items remaining';
+    } else if (confStrong) {
+      box.classList.add('go');
+      text.textContent = 'EXECUTE';
+      sub.textContent = 'high confluence \u2014 place trade, set alerts, walk away';
+      if (hint) hint.style.display = 'block';
+    } else {
+      box.classList.add('warn');
+      text.textContent = 'PROCEED WITH CAUTION';
+      sub.textContent = 'minimum confluence met \u2014 size down, tight stop';
+      box.classList.add('go');
+      if (hint) hint.style.display = 'block';
+    }
+  }
+
+  function calcRR() {
+    const stop = parseFloat(document.getElementById('stopAmt').value);
+    const tp = parseFloat(document.getElementById('tpAmt').value);
+    const el = document.getElementById('rrValue');
+    if (stop && tp && stop > 0) {
+      const rr = (tp / stop).toFixed(1);
+      el.textContent = rr + ' : 1';
+      el.style.color = rr >= 3 ? 'var(--accent)' : rr >= 2 ? 'var(--warn)' : 'var(--fail)';
+    } else {
+      el.textContent = '\u2014 : 1';
+      el.style.color = 'var(--accent)';
+    }
+  }
+
+  function setAsset(btn) {
+    document.querySelectorAll('.asset-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  // ASSET MANAGER
+  function getAssets() {
+    try {
+      const stored = localStorage.getItem('mp_assets');
+      if (stored) return JSON.parse(stored);
+    } catch {}
+    return ['ETH','BTC','GOLD'];
+  }
+  function saveAssets(arr) {
+    try { localStorage.setItem('mp_assets', JSON.stringify(arr)); } catch {}
+  }
+  function buildAssets() {
+    const row = document.getElementById('assetRow');
+    if (!row) return;
+    const assets = getAssets();
+    row.innerHTML = assets.map((a, i) => `<button class="asset-btn${i===0?' active':''}" onclick="setAsset(this)">${a}</button>`).join('');
+  }
+  function buildGhostAssets() {
+    const row = document.getElementById('ghostAssetRow');
+    if (!row) return;
+    const assets = getAssets();
+    row.innerHTML = assets.map((a, i) => `<button class="journal-pill${i===0?' active':''}" onclick="setPill(this,'g-asset')">${a}</button>`).join('');
+  }
+  function openAssetManager() {
+    const current = getAssets();
+    const input = prompt('Edit assets (comma separated):', current.join(', '));
+    if (input === null) return;
+    const newAssets = input.split(',').map(s => s.trim()).filter(s => s.length > 0);
+    if (newAssets.length === 0) return;
+    saveAssets(newAssets);
+    buildAssets();
+    buildGhostAssets();
+  }
+
+  // EXIT STRATEGY
+  let tpCount = 2;
+  function setExitStrategy(type) {
+    const row = document.getElementById('exitStratRow');
+    row.querySelectorAll('.journal-pill').forEach(p => p.classList.remove('active'));
+    event.target.classList.add('active');
+    const details = document.getElementById('exitDetails');
+    const partials = document.getElementById('partialFields');
+    const trail = document.getElementById('trailCheck');
+    const tpWrap = document.getElementById('exitTPWrap');
+
+    if (type === 'full') {
+      details.style.display = 'none';
+      partials.style.display = 'none';
+      trail.style.display = 'none';
+      if (tpWrap) tpWrap.style.display = 'block';
+    } else if (type === 'partial') {
+      details.style.display = 'block';
+      partials.style.display = 'block';
+      trail.style.display = 'none';
+      if (tpWrap) tpWrap.style.display = 'none';
+    } else if (type === 'trail') {
+      details.style.display = 'block';
+      partials.style.display = 'none';
+      trail.style.display = 'flex';
+      if (tpWrap) tpWrap.style.display = 'block';
+    }
+  }
+
+  function addTPField() {
+    tpCount++;
+    const grid = document.getElementById('tpFieldsGrid');
+    const div = document.createElement('div');
+    div.className = 'input-group';
+    div.innerHTML = '<label class="input-label">TP' + tpCount + '</label><input type="text" class="tp-field" placeholder="e.g. price level">';
+    grid.appendChild(div);
+  }
+
+  function resetTPFields() {
+    tpCount = 2;
+    const grid = document.getElementById('tpFieldsGrid');
+    if (!grid) return;
+    // Keep first 2, remove rest
+    while (grid.children.length > 2) grid.removeChild(grid.lastChild);
+    grid.querySelectorAll('input').forEach(i => i.value = '');
+  }
+
+  function setDirection(el, dir) {
+    el.closest('.journal-toggle-row').querySelectorAll('.journal-pill').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+    // Update timeframe pill colors based on direction
+    updateTFColors();
+  }
+
+  function updateTFColors() {
+    const activeDir = document.querySelector('#directionRow .journal-pill.active');
+    const dir = activeDir ? activeDir.textContent.trim().toLowerCase() : '';
+    document.querySelectorAll('#tfRow .journal-pill').forEach(p => {
+      p.classList.remove('tf-long', 'tf-short');
+      if (p.classList.contains('active')) {
+        p.classList.add(dir === 'short' ? 'tf-short' : 'tf-long');
+      }
+    });
+  }
+
+  function buildTimeframes() {
+    const row = document.getElementById('tfRow');
+    if (!row) return;
+    const isScalp = currentMode === 'scalp';
+    const tfs = isScalp ? ['1m','5m','15m','30m'] : ['1H','4H','1D','1W'];
+    row.innerHTML = tfs.map(tf => `<button class="journal-pill" onclick="setPill(this,'tf');updateTFColors()">${tf}</button>`).join('');
+  }
+
+  function resetChecksOnly() {
+    document.querySelectorAll('#checklistBody .check-item').forEach(el => el.classList.remove('checked'));
+    document.querySelectorAll('.conf-item').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.context-item').forEach(el => el.classList.remove('active'));
+    ['posSize','stopAmt','tpAmt','leverage','exitEntryPrice','exitTPPrice'].forEach(id => { const el = document.getElementById(id); if(el) el.value=''; });
+    document.getElementById('rrValue').textContent = '\u2014 : 1';
+    document.getElementById('rrValue').style.color = 'var(--accent)';
+    htfCount = 0; ltfCount = 0;
+    updateHTFScore(); updateLTFScore(); updateTotal();
+    // Reset direction, session, timeframe selections
+    document.querySelectorAll('#directionRow .journal-pill, #sessionRow .journal-pill, #tfRow .journal-pill').forEach(p => p.classList.remove('active'));
+    // Reset exit plan
+    document.querySelectorAll('#exitStratRow .journal-pill').forEach(p => p.classList.remove('active'));
+    var ed = document.getElementById('exitDetails'); if(ed) ed.style.display = 'none';
+    var pf = document.getElementById('partialFields'); if(pf) pf.style.display = 'none';
+    var tc = document.getElementById('trailCheck'); if(tc) { tc.style.display = 'none'; tc.classList.remove('checked'); }
+    var ptc = document.getElementById('partialTrailCheck'); if(ptc) ptc.classList.remove('checked');
+    var tw = document.getElementById('exitTPWrap'); if(tw) tw.style.display = 'block';
+    resetTPFields();
+    // Close journal expand if open
+    var je = document.getElementById('journalExpand'); if(je) je.classList.remove('open');
+  }
+
+  function resetAll() {
+    resetChecksOnly();
+    document.querySelectorAll('.preflight-item').forEach(el => el.classList.remove('cleared'));
+    document.querySelector('.preflight-wrap').classList.remove('sealed');
+    preflightCount = 0;
+    lossCount = 0;
+    document.querySelectorAll('.loss-dot').forEach(d => d.classList.remove('active'));
+    ['rule2','rule3','rule6','rule9'].forEach(id => document.getElementById(id).classList.remove('triggered'));
+    // Reset loss protocol gate
+    document.getElementById('belowLossGate').classList.remove('loss-locked');
+    document.getElementById('lossLockMsg').classList.add('hidden');
+    document.getElementById('lossGateStatus').textContent = 'CLEAR';
+    document.getElementById('lossGateStatus').className = 'gate-status unlocked';
+    // Reset pre-flight gate
+    document.getElementById('checklistBody').classList.add('locked');
+    document.getElementById('lockMsg').classList.remove('hidden');
+    document.getElementById('gateStatus').textContent = 'LOCKED';
+    document.getElementById('gateStatus').className = 'gate-status locked';
+    document.getElementById('totalScore').textContent = '0';
+    const box = document.getElementById('verdictBox');
+    box.className = 'verdict-box';
+    document.getElementById('verdictText').textContent = 'COMPLETE CHECKLIST';
+    document.getElementById('verdictSub').textContent = 'fill out all sections above';
+  }
+
+  // VIEW SWITCHING
+  function switchView(view, btn) {
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('view-' + view).classList.add('active');
+    btn.classList.add('active');
+    if (view === 'log') { renderStats(); renderLog(); }
+  }
+
+  // STORAGE
+  function getEntries() {
+    try { return JSON.parse(localStorage.getItem('edgelog_entries') || '[]'); } catch { return []; }
+  }
+  function saveEntries(entries) {
+    try { localStorage.setItem('edgelog_entries', JSON.stringify(entries)); } catch { /* storage unavailable */ }
+  }
+
+  // SAVE GHOST
+  function saveGhost() {
+    const saw = document.getElementById('ghostSawField').value.trim();
+    const stopped = document.getElementById('ghostStoppedField').value.trim();
+    const result = document.getElementById('ghostResultField').value.trim();
+    const reflection = document.getElementById('ghostReflection').value.trim();
+    if (!saw) { alert('Add what you saw before saving.'); return; }
+
+    const now = new Date().toLocaleString();
+    document.getElementById('ghostDate').value = now;
+
+    // Get active pills from ghost form
+    const rows = document.querySelectorAll('#view-ghost .journal-toggle-row');
+    const asset = rows[0]?.querySelector('.journal-pill.active')?.textContent || 'ETH/USDT';
+    const tradeType = rows[1]?.querySelector('.journal-pill.active')?.textContent || 'Swing';
+    const direction = rows[2]?.querySelector('.journal-pill.active')?.textContent || 'Long';
+    const session = rows[3]?.querySelector('.journal-pill.active')?.textContent || 'New York';
+
+    const entries = getEntries();
+    entries.unshift({
+      type: 'ghost',
+      date: now,
+      asset, tradeType, direction, session,
+      saw, stopped, result, reflection,
+    });
+    saveEntries(entries);
+    document.getElementById('ghostSawField').value = '';
+    document.getElementById('ghostStoppedField').value = '';
+    document.getElementById('ghostResultField').value = '';
+    document.getElementById('ghostReflection').value = '';
+    document.getElementById('ghostDate').value = '';
+    // Reset checklist since this was a ghost trade, not a real one
+    resetAll();
+    // Switch back to checklist view
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('view-checklist').classList.add('active');
+    document.querySelector('.nav-tab').classList.add('active');
+    alert('Ghost entry saved. Checklist reset.');
+  }
+
+  function clearGhostForm() {
+    var f = document.getElementById('ghostSawField'); if(f) f.value = '';
+    f = document.getElementById('ghostStoppedField'); if(f) f.value = '';
+    f = document.getElementById('ghostResultField'); if(f) f.value = '';
+    f = document.getElementById('ghostReflection'); if(f) f.value = '';
+    f = document.getElementById('ghostDate'); if(f) f.value = '';
+  }
+
+  // TRADE JOURNAL — expands below EXECUTE
+  let tradeOpen = false;
+  let tradeStartTime = null;
+  let tradeTimerInterval = null;
+
+  function toggleTradeJournal() {
+    const box = document.getElementById('verdictBox');
+
+    // If already open, allow collapsing
+    if (tradeOpen) {
+      tradeOpen = false;
+      document.getElementById('journalExpand').classList.remove('open');
+      box.classList.remove('trade-active');
+      document.getElementById('verdictText').textContent = 'EXECUTE';
+      document.getElementById('verdictSub').textContent = 'high confluence \u2014 place trade, set alerts, walk away';
+      document.getElementById('verdictHint').textContent = 'tap to open journal';
+      stopTradeTimer();
+      return;
+    }
+
+    // Only allow opening if verdict is GO
+    if (!box.classList.contains('go')) return;
+
+    // Validate all required fields before allowing execute
+    const missing = [];
+
+    // Check all check-items are checked
+    const checks = document.querySelectorAll('#checklistBody .check-item.checked').length;
+    const total = currentMode === 'swing' ? swingChecks : scalpChecks;
+    if (checks < total) missing.push((total - checks) + ' checklist items unchecked');
+
+    // Direction selected
+    const dir = document.querySelector('#directionRow .journal-pill.active');
+    if (!dir) missing.push('direction (Long/Short)');
+
+    // Session selected
+    const sess = document.querySelector('#sessionRow .journal-pill.active');
+    if (!sess) missing.push('session');
+
+    // Timeframe selected
+    const tf = document.querySelector('#tfRow .journal-pill.active');
+    if (!tf) missing.push('entry timeframe');
+
+    // Exit strategy selected
+    const exitStrat = document.querySelector('#exitStratRow .journal-pill.active');
+    if (!exitStrat) missing.push('exit strategy');
+
+    // Entry price filled
+    const entryPrice = document.getElementById('exitEntryPrice');
+    if (!entryPrice || !entryPrice.value.trim()) missing.push('entry price');
+
+    // Risk management fields
+    const stopAmt = document.getElementById('stopAmt');
+    const tpAmt = document.getElementById('tpAmt');
+    if (!stopAmt || !stopAmt.value.trim()) missing.push('stop loss $');
+    if (!tpAmt || !tpAmt.value.trim()) missing.push('TP target $');
+
+    if (missing.length > 0) {
+      alert('Complete before executing:\n\n\u2022 ' + missing.join('\n\u2022 '));
+      return;
+    }
+
+    tradeOpen = true;
+    const expand = document.getElementById('journalExpand');
+    const hint = document.getElementById('verdictHint');
+    const text = document.getElementById('verdictText');
+    const sub = document.getElementById('verdictSub');
+
+    expand.classList.add('open');
+    box.classList.add('trade-active');
+    text.textContent = 'TRADE ACTIVE';
+    sub.textContent = 'journal open \u2014 log when trade closes';
+    hint.textContent = 'tap to collapse';
+    // Clear ghost trade form since we're taking a real trade
+    clearGhostForm();
+    // Start trade timer
+    tradeStartTime = Date.now();
+    try { localStorage.setItem('edgelog_trade_start', tradeStartTime.toString()); } catch {}
+    startTradeTimer();
+  }
+
+  function startTradeTimer() {
+    if (tradeTimerInterval) clearInterval(tradeTimerInterval);
+    tradeTimerInterval = setInterval(updateTradeTimer, 1000);
+    updateTradeTimer();
+  }
+
+  function stopTradeTimer() {
+    if (tradeTimerInterval) clearInterval(tradeTimerInterval);
+  }
+
+  function updateTradeTimer() {
+    if (!tradeStartTime) return;
+    const diff = Date.now() - tradeStartTime;
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    const pad = n => n.toString().padStart(2, '0');
+    const el = document.getElementById('tradeTimerText');
+    if (el) el.textContent = `TRADE OPEN \u2014 ${h}h ${pad(m)}m ${pad(s)}s`;
+  }
+
+  function getTimeInPosition() {
+    if (!tradeStartTime) return '';
+    const diff = Date.now() - tradeStartTime;
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    if (h >= 24) return Math.floor(h / 24) + 'd ' + (h % 24) + 'h';
+    return h + 'h ' + m + 'm';
+  }
+
+  // SAVE TRADE ENTRY
+  function saveTradeEntry() {
+    const reasoning = document.getElementById('journalReasoning').value.trim();
+    const emotions = document.getElementById('journalEmotions').value.trim();
+    const reflection = document.getElementById('journalReflection').value.trim();
+    let entryPrice = '';
+    const ep = document.getElementById('exitEntryPrice');
+    if (ep) entryPrice = ep.value.trim();
+    const exitPrice = document.getElementById('journalExitPrice').value.trim();
+    const rrAchieved = document.getElementById('journalRR').value.trim();
+    const pnl = document.getElementById('journalPnL').value.trim();
+    if (!reasoning) { alert('Add your reasoning before saving.'); return; }
+
+    // Validate outcome is selected
+    const sec = document.getElementById('sec-journal');
+    const outcomeRow = sec.querySelectorAll('.journal-toggle-row')[0];
+    const outcomeActive = outcomeRow?.querySelector('.journal-pill.active');
+    if (!outcomeActive) { alert('Select an outcome (Win/Loss/Breakeven) before saving.'); return; }
+
+    const now = new Date().toLocaleString();
+    const timeInPos = getTimeInPosition();
+
+    // Auto-capture from checklist state
+    const activeAsset = document.querySelector('.asset-btn.active');
+    const asset = activeAsset ? activeAsset.textContent : 'ETH/USDT';
+    const activeDir = document.querySelector('#directionRow .journal-pill.active');
+    const direction = activeDir ? activeDir.textContent : '';
+    const activeTF = document.querySelector('#tfRow .journal-pill.active');
+    const timeframe = activeTF ? activeTF.textContent : '';
+    const activeSession = document.querySelector('#sessionRow .journal-pill.active');
+    const session = activeSession ? activeSession.textContent : '';
+    const tradeType = currentMode === 'swing' ? 'Swing' : 'Scalp';
+    const activeExit = document.querySelector('#exitStratRow .journal-pill.active');
+    const exitStrategy = activeExit ? activeExit.textContent : '';
+
+    // Read from journal expand
+    const toggleRows = sec.querySelectorAll('.journal-toggle-row');
+    const outcome = toggleRows[0]?.querySelector('.journal-pill.active')?.textContent || '';
+    const rulesFollowed = toggleRows[1]?.querySelector('.journal-pill.active')?.textContent || '';
+
+    const entries = getEntries();
+    entries.unshift({
+      type: 'trade',
+      outcome: outcome.toLowerCase(),
+      date: now,
+      asset, direction, tradeType, timeframe, session, exitStrategy, timeInPos, rrAchieved, pnl,
+      entryPrice, exitPrice,
+      reasoning, emotions, reflection, rulesFollowed,
+    });
+    saveEntries(entries);
+
+    // Clear fields
+    document.getElementById('journalReasoning').value = '';
+    document.getElementById('journalEmotions').value = '';
+    document.getElementById('journalReflection').value = '';
+    document.getElementById('journalExitPrice').value = '';
+    document.getElementById('journalRR').value = '';
+    document.getElementById('journalPnL').value = '';
+    // Clear exit plan fields
+    var eep = document.getElementById('exitEntryPrice'); if(eep) eep.value = '';
+    var etp = document.getElementById('exitTPPrice'); if(etp) etp.value = '';
+    document.querySelectorAll('.tp-field').forEach(f => f.value = '');
+
+    // Close journal
+    tradeOpen = false;
+    tradeStartTime = null;
+    stopTradeTimer();
+    try { localStorage.removeItem('edgelog_trade_start'); } catch {}
+    document.getElementById('journalExpand').classList.remove('open');
+    document.getElementById('verdictBox').classList.remove('trade-active');
+
+    syncLossStreak();
+    alert('Trade entry saved.');
+  }
+
+  // RENDER LOG
+  function renderLog() {
+    const entries = getEntries();
+    const container = document.getElementById('logEntries');
+    if (!entries.length) {
+      container.innerHTML = '<div class="no-entries">// no entries yet</div>';
+      return;
+    }
+    container.innerHTML = entries.map((e, i) => {
+      if (e.type === 'ghost') {
+        return `<div class="entry-card ghost-card">
+          <div class="entry-header">
+            <span class="entry-type ghost">\u2726 Ghost Trade</span>
+            <div style="display:flex;align-items:center;gap:8px">
+              <span class="entry-date">${e.date}</span>
+              <button class="entry-delete" onclick="deleteEntry(${i})">\u2715</button>
+            </div>
+          </div>
+          <div class="entry-meta">
+            <span class="entry-tag">${e.asset || ''}</span>
+            ${e.tradeType ? `<span class="entry-tag">${e.tradeType}</span>` : ''}
+            ${e.direction ? `<span class="entry-tag">${e.direction}</span>` : ''}
+            ${e.session ? `<span class="entry-tag">${e.session}</span>` : ''}
+          </div>
+          <div class="entry-body">
+            <div style="margin-bottom:6px"><span style="color:var(--muted);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px">SAW // </span>${e.saw}</div>
+            ${e.stopped ? `<div style="margin-bottom:6px"><span style="color:var(--muted);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px">STOPPED BY // </span>${e.stopped}</div>` : ''}
+            ${e.result ? `<div style="margin-bottom:6px"><span style="color:var(--muted);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px">RESULT // </span>${e.result}</div>` : ''}
+            ${e.reflection ? `<div><span style="color:var(--muted);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px">REFLECTION // </span>${e.reflection}</div>` : ''}
+          </div>
+        </div>`;
+      } else {
+        const outcomeClass = e.outcome === 'win' ? 'win-card' : e.outcome === 'loss' ? 'loss-card' : '';
+        const outcomeType = e.outcome === 'win' ? 'win' : e.outcome === 'loss' ? 'loss' : 'breakeven';
+        return `<div class="entry-card ${outcomeClass}">
+          <div class="entry-header">
+            <span class="entry-type ${outcomeType}">${e.outcome?.toUpperCase() || 'TRADE'}</span>
+            <div style="display:flex;align-items:center;gap:8px">
+              <span class="entry-date">${e.date}</span>
+              <button class="entry-delete" onclick="deleteEntry(${i})">\u2715</button>
+            </div>
+          </div>
+          <div class="entry-meta">
+            <span class="entry-tag">${e.asset || ''}</span>
+            ${e.direction ? `<span class="entry-tag">${e.direction}</span>` : ''}
+            <span class="entry-tag">${e.tradeType || ''}</span>
+            ${e.timeframe ? `<span class="entry-tag">${e.timeframe}</span>` : ''}
+            <span class="entry-tag">${e.session || ''}</span>
+            ${e.exitStrategy ? `<span class="entry-tag">${e.exitStrategy}</span>` : ''}
+            ${e.entryPrice ? `<span class="entry-tag">IN ${e.entryPrice}</span>` : ''}
+            ${e.exitPrice ? `<span class="entry-tag">OUT ${e.exitPrice}</span>` : ''}
+            ${e.timeInPos ? `<span class="entry-tag">${e.timeInPos}</span>` : ''}
+            ${e.rrAchieved ? `<span class="entry-tag">R:R ${e.rrAchieved}</span>` : ''}
+            ${e.pnl ? `<span class="entry-tag">${e.pnl}</span>` : ''}
+            ${e.rulesFollowed ? `<span class="entry-tag">Rules: ${e.rulesFollowed}</span>` : ''}
+          </div>
+          <div class="entry-body">
+            <div style="margin-bottom:6px"><span style="color:var(--muted);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px">THESIS // </span>${e.reasoning}</div>
+            ${e.emotions ? `<div style="margin-bottom:6px"><span style="color:var(--muted);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px">EMOTIONS // </span>${e.emotions}</div>` : ''}
+            ${e.reflection ? `<div><span style="color:var(--muted);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px">REFLECTION // </span>${e.reflection}</div>` : ''}
+          </div>
+        </div>`;
+      }
+    }).join('');
+  }
+
+  function deleteEntry(i) {
+    if (!confirm('Delete this entry?')) return;
+    const entries = getEntries();
+    entries.splice(i, 1);
+    saveEntries(entries);
+    renderLog();
+    syncLossStreak();
+  }
+
+  // AUTO LOSS STREAK — reads consecutive losses from journal + timed lockout
+  function syncLossStreak() {
+    const entries = getEntries();
+    const trades = entries.filter(e => e.type === 'trade');
+    let streak = 0;
+    for (let i = 0; i < trades.length; i++) {
+      if (trades[i].outcome === 'loss') {
+        streak++;
+      } else {
+        break;
+      }
+    }
+    lossCount = streak;
+    document.querySelectorAll('.loss-dot').forEach((d, i) => d.classList.toggle('active', i < lossCount));
+    document.getElementById('rule2').classList.toggle('triggered', lossCount >= 2);
+    document.getElementById('rule3').classList.toggle('triggered', lossCount >= 3);
+    document.getElementById('rule6').classList.toggle('triggered', lossCount >= 6);
+    document.getElementById('rule9').classList.toggle('triggered', lossCount >= 9);
+
+    const belowGate = document.getElementById('belowLossGate');
+    const lossMsg = document.getElementById('lossLockMsg');
+    const lossStatus = document.getElementById('lossGateStatus');
+    const countdown = document.getElementById('lockCountdown');
+
+    // Timed lockout logic
+    const lockDurations = { 2: 24, 3: 24, 6: 72, 9: 168 }; // hours
+    let lockHours = 0;
+    if (lossCount >= 9) lockHours = 168;
+    else if (lossCount >= 6) lockHours = 72;
+    else if (lossCount >= 2) lockHours = 24;
+
+    if (lossCount >= 2) {
+      // Check if we have a stored lockout timestamp
+      let lockStart = null;
+      try { lockStart = localStorage.getItem('edgelog_lock_start'); } catch {}
+
+      if (!lockStart) {
+        // Set the lockout start time
+        const now = Date.now();
+        try { localStorage.setItem('edgelog_lock_start', now.toString()); } catch {}
+        try { localStorage.setItem('edgelog_lock_hours', lockHours.toString()); } catch {}
+        lockStart = now.toString();
+      }
+
+      const startTime = parseInt(lockStart);
+      let storedHours = lockHours;
+      try { storedHours = parseInt(localStorage.getItem('edgelog_lock_hours')) || lockHours; } catch {}
+      // Use the greater of current threshold or stored threshold
+      const effectiveHours = Math.max(storedHours, lockHours);
+      const unlockTime = startTime + (effectiveHours * 60 * 60 * 1000);
+      const now = Date.now();
+
+      if (now < unlockTime) {
+        // Still locked
+        belowGate.classList.add('loss-locked');
+        lossMsg.classList.remove('hidden');
+        lossStatus.textContent = 'LOCKED';
+        lossStatus.className = 'gate-status locked';
+        countdown.classList.remove('hidden');
+        updateCountdown(unlockTime);
+        // Start countdown interval
+        if (window._lockInterval) clearInterval(window._lockInterval);
+        window._lockInterval = setInterval(() => updateCountdown(unlockTime), 1000);
+      } else {
+        // Lockout expired — but losses still there, show as warning
+        belowGate.classList.remove('loss-locked');
+        lossMsg.textContent = 'lockout expired \u2014 reset loss count to proceed clean';
+        lossMsg.classList.remove('hidden');
+        lossStatus.textContent = 'EXPIRED';
+        lossStatus.className = 'gate-status locked';
+        countdown.classList.add('hidden');
+        if (window._lockInterval) clearInterval(window._lockInterval);
+      }
+    } else {
+      belowGate.classList.remove('loss-locked');
+      lossMsg.classList.add('hidden');
+      lossMsg.textContent = 'loss protocol active \u2014 step away';
+      lossStatus.textContent = 'CLEAR';
+      lossStatus.className = 'gate-status unlocked';
+      countdown.classList.add('hidden');
+      if (window._lockInterval) clearInterval(window._lockInterval);
+      // Clear stored lockout
+      try { localStorage.removeItem('edgelog_lock_start'); } catch {}
+      try { localStorage.removeItem('edgelog_lock_hours'); } catch {}
+    }
+  }
+
+  function updateCountdown(unlockTime) {
+    const el = document.getElementById('lockCountdown');
+    if (!el) return;
+    const diff = unlockTime - Date.now();
+    if (diff <= 0) {
+      el.textContent = 'LOCKOUT EXPIRED';
+      syncLossStreak(); // Re-check
+      return;
+    }
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    const pad = n => n.toString().padStart(2, '0');
+    el.textContent = `UNLOCKS IN ${pad(h)}h ${pad(m)}m ${pad(s)}s`;
+  }
+
+  // STATS DASHBOARD
+  function renderStats() {
+    const entries = getEntries();
+    const trades = entries.filter(e => e.type === 'trade');
+    const container = document.getElementById('statsDashboard');
+    if (!trades.length) { container.innerHTML = ''; return; }
+
+    const wins = trades.filter(t => t.outcome === 'win');
+    const losses = trades.filter(t => t.outcome === 'loss');
+    const total = trades.length;
+    const winRate = total > 0 ? ((wins.length / total) * 100).toFixed(1) : '0';
+
+    // R:R entries
+    const rrAll = trades.filter(t => t.rrAchieved).map(t => parseFloat(t.rrAchieved));
+    const avgRR = rrAll.length > 0 ? (rrAll.reduce((a,b) => a+b, 0) / rrAll.length).toFixed(1) : '\u2014';
+
+    // Total R (wins positive, losses negative as -1R each unless specified)
+    const winRRs = wins.map(t => t.rrAchieved ? parseFloat(t.rrAchieved) : 0);
+    const lossRRs = losses.map(t => t.rrAchieved ? -Math.abs(parseFloat(t.rrAchieved)) : -1);
+    const totalR = [...winRRs, ...lossRRs].reduce((a,b) => a+b, 0).toFixed(1);
+
+    // PnL
+    const pnlEntries = trades.filter(t => t.pnl).map(t => {
+      const v = t.pnl.replace(/[^0-9.\-+]/g, '');
+      return parseFloat(v) || 0;
+    });
+    const netPnL = pnlEntries.length > 0 ? pnlEntries.reduce((a,b) => a+b, 0).toFixed(0) : '\u2014';
+
+    // Avg win R + $
+    const winRR = winRRs.length > 0 ? (winRRs.reduce((a,b) => a+b, 0) / winRRs.length).toFixed(1) : '\u2014';
+    const winPnLs = wins.filter(t => t.pnl).map(t => parseFloat(t.pnl.replace(/[^0-9.\-+]/g,'')) || 0);
+    const avgWinPnL = winPnLs.length > 0 ? Math.round(winPnLs.reduce((a,b) => a+b, 0) / winPnLs.length) : '\u2014';
+
+    // Avg loss R + $
+    const lossRRAbs = losses.filter(t => t.rrAchieved).map(t => Math.abs(parseFloat(t.rrAchieved)));
+    const avgLossR = lossRRAbs.length > 0 ? (lossRRAbs.reduce((a,b) => a+b, 0) / lossRRAbs.length).toFixed(1) : '1.0';
+    const lossPnLs = losses.filter(t => t.pnl).map(t => parseFloat(t.pnl.replace(/[^0-9.\-+]/g,'')) || 0);
+    const avgLossPnL = lossPnLs.length > 0 ? Math.round(lossPnLs.reduce((a,b) => a+b, 0) / lossPnLs.length) : '\u2014';
+
+    // Current streak
+    let currentStreak = 0, streakType = '';
+    if (trades.length > 0) {
+      streakType = trades[0].outcome;
+      for (let i = 0; i < trades.length; i++) {
+        if (trades[i].outcome === streakType) currentStreak++;
+        else break;
+      }
+    }
+    const streakLabel = streakType === 'win' ? 'W' : streakType === 'loss' ? 'L' : 'BE';
+    const streakColor = streakType === 'win' ? '' : streakType === 'loss' ? ' fail' : ' warn';
+
+    // Best session
+    const sessionMap = {};
+    trades.forEach(t => {
+      if (!t.session) return;
+      if (!sessionMap[t.session]) sessionMap[t.session] = { w:0, total:0 };
+      sessionMap[t.session].total++;
+      if (t.outcome === 'win') sessionMap[t.session].w++;
+    });
+    let bestSession = '\u2014';
+    let bestRate = 0;
+    Object.entries(sessionMap).forEach(([name, data]) => {
+      const rate = data.total > 0 ? data.w / data.total : 0;
+      if (rate > bestRate && data.total >= 2) { bestRate = rate; bestSession = name; }
+    });
+
+    // Rules correlation
+    const rulesYes = trades.filter(t => t.rulesFollowed === 'Yes');
+    const rulesYesWins = rulesYes.filter(t => t.outcome === 'win').length;
+    const rulesWinRate = rulesYes.length > 0 ? ((rulesYesWins / rulesYes.length) * 100).toFixed(0) : '\u2014';
+
+    const winRateColor = parseFloat(winRate) >= 50 ? '' : parseFloat(winRate) >= 40 ? ' warn' : ' fail';
+    const totalRColor = parseFloat(totalR) > 0 ? ' cyan' : ' fail';
+    const netPnLColor = netPnL !== '\u2014' && parseFloat(netPnL) > 0 ? '' : netPnL !== '\u2014' ? ' fail' : '';
+    const netPnLDisplay = netPnL !== '\u2014' ? (parseFloat(netPnL) > 0 ? '+$' + netPnL : '-$' + Math.abs(netPnL)) : '\u2014';
+
+    container.innerHTML = `
+      <div class="stats-grid" style="grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:6px">
+        <div class="stat-card"><div class="stat-value${winRateColor}">${winRate}%</div><div class="stat-label">Win Rate</div></div>
+        <div class="stat-card"><div class="stat-value${totalRColor}">${totalR}R</div><div class="stat-label">Total R</div></div>
+        <div class="stat-card"><div class="stat-value${netPnLColor}">${netPnLDisplay}</div><div class="stat-label">Net PnL</div></div>
+      </div>
+      <div class="stats-grid" style="grid-template-columns:1fr 1fr;gap:6px;margin-bottom:16px">
+        <div class="stat-card"><div class="stat-value">${avgRR} : 1</div><div class="stat-label">Avg R:R</div></div>
+        <div class="stat-card"><div class="stat-value${streakColor}">${currentStreak}${streakLabel}</div><div class="stat-label">Current Streak</div></div>
+        <div class="stat-card"><div class="stat-value">${winRR}R${avgWinPnL !== '\u2014' ? ` <span class="sub">/ +$${avgWinPnL}</span>` : ''}</div><div class="stat-label">Avg Win</div></div>
+        <div class="stat-card"><div class="stat-value fail">-${avgLossR}R${avgLossPnL !== '\u2014' ? ` <span class="sub">/ -$${Math.abs(avgLossPnL)}</span>` : ''}</div><div class="stat-label">Avg Loss</div></div>
+        <div class="stat-card"><div class="stat-value">${bestSession}</div><div class="stat-label">Best Session</div></div>
+        <div class="stat-card"><div class="stat-value orange">${rulesWinRate}%</div><div class="stat-label">Rules Win %</div></div>
+      </div>
+    `;
+  }
+
+  // INIT — each wrapped separately so one failure doesn't block others
+  try { initQuotes(); } catch(e) { console.warn('initQuotes:', e); }
+  try { buildAssets(); } catch(e) { console.warn('buildAssets:', e); }
+  try { buildGhostAssets(); } catch(e) { console.warn('buildGhostAssets:', e); }
+  try { setMode('swing'); } catch(e) { console.warn('setMode:', e); }
+  try { syncLossStreak(); } catch(e) { console.warn('syncLossStreak:', e); }
+  try { checkPWAHint(); } catch(e) { console.warn('checkPWAHint:', e); }
+  try {
+    const savedStart = localStorage.getItem('edgelog_trade_start');
+    if (savedStart) {
+      tradeStartTime = parseInt(savedStart);
+      tradeOpen = true;
+      document.getElementById('journalExpand').classList.add('open');
+      var vb = document.getElementById('verdictBox');
+      if (vb) { vb.classList.add('go','trade-active'); }
+      document.getElementById('verdictText').textContent = 'TRADE ACTIVE';
+      document.getElementById('verdictSub').textContent = 'journal open \u2014 log when trade closes';
+      var vh = document.getElementById('verdictHint');
+      if (vh) { vh.style.display = 'block'; vh.textContent = 'tap to collapse'; }
+      startTradeTimer();
+    }
+  } catch(e) { console.warn('tradeResume:', e); }
+  try {
+    var quoteInput = document.getElementById('newQuoteInput');
+    if (quoteInput) quoteInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') addQuote();
+    });
+  } catch(e) { console.warn('quoteInput:', e); }
+</script>
+<!-- QUOTE MANAGER MODAL -->
+<div class="modal-overlay" id="quoteModal">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title">Manage Quotes</span>
+      <button class="modal-close" onclick="closeQuoteManager()">&times;</button>
+    </div>
+    <div id="quoteList"></div>
+    <div class="quote-add-row">
+      <input type="text" class="quote-add-input" id="newQuoteInput" placeholder="New quote...">
+      <button class="quote-add-btn" onclick="addQuote()">+ ADD</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FIREBASE CLOUD SYNC  — localStorage-first, cloud mirrors it
+     Replace the firebaseConfig values with your own project config
+     from console.firebase.google.com → Project Settings → Your apps
+     ═══════════════════════════════════════════════════════════ -->
+<script type="module">
+  // Safari-safe console shim
+  const _log = (fn, ...args) => { try { if (typeof console !== 'undefined' && typeof console[fn] === 'function') console[fn](...args); } catch {} };
+  const _c = { log: (...a) => _log('log',...a), warn: (...a) => _log('warn',...a), info: (...a) => _log('log',...a) };
+
+  // ── 1. PASTE YOUR FIREBASE CONFIG HERE ──────────────────────
+  const firebaseConfig = {
+    apiKey:            "AIzaSyALAj03gdgyOnOmTvyxhT-aCCoDc-lvXG0",
+    authDomain:        "benjis-money-printer.firebaseapp.com",
+    databaseURL:       "https://benjis-money-printer-default-rtdb.firebaseio.com",
+    projectId:         "benjis-money-printer",
+    storageBucket:     "benjis-money-printer.firebasestorage.app",
+    messagingSenderId: "944848548307",
+    appId:             "1:944848548307:web:5cf5f0598482fbf83ebf26"
+  };
+  // ────────────────────────────────────────────────────────────
+
+  // If config is still placeholder, skip cloud sync silently (works fine local-only)
+  if (firebaseConfig.apiKey.startsWith('REPLACE')) {
+    _c.log('[MP] Firebase not configured — running in local-only mode');
+    // Register service worker even in local mode
+    registerSW();
+    window._fbReady = false;
+  } else {
+    initFirebase();
+  }
+
+  async function initFirebase() {
+    try {
+      const { initializeApp } = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js');
+      const { getFirestore, doc, getDoc, setDoc, onSnapshot, enableIndexedDbPersistence }
+        = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js');
+      const { getAuth, signInAnonymously, onAuthStateChanged }
+        = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js');
+
+      const app  = initializeApp(firebaseConfig);
+      const db   = getFirestore(app);
+      const auth = getAuth(app);
+
+      // Enable offline persistence so Firestore caches to IndexedDB
+      try { await enableIndexedDbPersistence(db); } catch(e) { /* multi-tab ok */ }
+
+      // Anonymous auth — user gets a stable UID per browser profile
+      onAuthStateChanged(auth, async (user) => {
+        if (!user) { await signInAnonymously(auth); return; }
+
+        const uid    = user.uid;
+        const docRef = doc(db, 'users', uid, 'data', 'state');
+
+        // ── PULL: on load, merge cloud → local (cloud wins for entries & quotes only)
+        try {
+          const snap = await getDoc(docRef);
+          if (snap.exists()) {
+            const cloud = snap.data();
+
+            // Merge entries: combine and deduplicate by date+type
+            if (cloud.entries) {
+              const local  = _localGet('edgelog_entries', []);
+              const merged = mergeEntries(local, cloud.entries);
+              _localSet('edgelog_entries', merged);
+              // Re-render log if visible
+              if (typeof renderStats === 'function') try { renderStats(); } catch {}
+              if (typeof renderLog   === 'function') try { renderLog();   } catch {}
+            }
+
+            // Merge quotes
+            if (cloud.quotes) {
+              const localQ = _localGet('edgelog_quotes', null);
+              if (!localQ || localQ.length === 0) {
+                _localSet('edgelog_quotes', cloud.quotes);
+                if (typeof initQuotes === 'function') try { initQuotes(); } catch {}
+              }
+            }
+
+            // Loss streak + lockout — take whichever is more severe
+            if (cloud.lossCount !== undefined) {
+              const localLoss = parseInt(localStorage.getItem('edgelog_loss_count') || '0');
+              if (cloud.lossCount > localLoss) {
+                localStorage.setItem('edgelog_loss_count', cloud.lossCount.toString());
+              }
+            }
+            if (cloud.lockStart && !localStorage.getItem('edgelog_lock_start')) {
+              localStorage.setItem('edgelog_lock_start', cloud.lockStart);
+            }
+            if (cloud.lockHours && !localStorage.getItem('edgelog_lock_hours')) {
+              localStorage.setItem('edgelog_lock_hours', cloud.lockHours);
+            }
+          }
+        } catch(e) { _c.warn('[MP] Pull failed (offline? ok):', e.code); }
+
+        // ── PUSH: write local state to Firestore every time something changes
+        window._fbPush = _debounce(async () => {
+          try {
+            await setDoc(docRef, {
+              entries:   _localGet('edgelog_entries', []),
+              quotes:    _localGet('edgelog_quotes', []),
+              assets:    _localGet('mp_assets', ['ETH','BTC','GOLD']),
+              lossCount: parseInt(localStorage.getItem('edgelog_loss_count') || '0'),
+              lockStart: localStorage.getItem('edgelog_lock_start') || null,
+              lockHours: localStorage.getItem('edgelog_lock_hours') || null,
+              syncedAt:  Date.now()
+            }, { merge: true });
+          } catch(e) {
+            if (e.code !== 'unavailable') _c.warn('[MP] Push failed:', e.code);
+            // Firestore queues writes offline automatically — no action needed
+          }
+        }, 1500);
+
+        // Patch the app's saveEntries to also trigger a cloud push
+        const _origSave = window.saveEntries;
+        if (typeof _origSave === 'function') {
+          window.saveEntries = function(entries) {
+            _origSave(entries);
+            window._fbPush();
+          };
+        }
+
+        // Also push whenever localStorage changes (catches quotes, assets, loss streaks)
+        window.addEventListener('_mpDataChange', () => { if(window._fbPush) window._fbPush(); });
+
+        // Show sync indicator on first successful connect
+        showSyncBadge('CLOUD SYNC ON');
+        window._fbReady = true;
+        _c.log('[MP] Firebase sync active. UID:', uid);
+      });
+
+    } catch(err) {
+      _c.warn('[MP] Firebase init failed:', err);
+    }
+    registerSW();
+  }
+
+  // ── HELPERS ─────────────────────────────────────────────────
+  function _localGet(key, fallback) {
+    try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; } catch { return fallback; }
+  }
+  function _localSet(key, val) {
+    try { localStorage.setItem(key, JSON.stringify(val)); } catch {}
+  }
+  function _debounce(fn, ms) {
+    let t; return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), ms); };
+  }
+
+  // Merge two entry arrays, deduplicate by date+type+asset fingerprint
+  function mergeEntries(local, cloud) {
+    const key = e => `${e.date}|${e.type}|${e.asset || ''}`;
+    const map  = new Map();
+    [...cloud, ...local].forEach(e => { if (!map.has(key(e))) map.set(key(e), e); });
+    return Array.from(map.values()).sort((a,b) => new Date(b.date) - new Date(a.date));
+  }
+
+  // Tiny sync badge that fades out
+  function showSyncBadge(msg) {
+    const el = document.createElement('div');
+    el.textContent = msg;
+    Object.assign(el.style, {
+      position:'fixed', bottom:'72px', right:'16px',
+      background:'rgba(38,255,38,0.1)', border:'1px solid rgba(38,255,38,0.3)',
+      color:'#26ff26', fontFamily:'Space Mono,monospace', fontSize:'9px',
+      letterSpacing:'2px', padding:'5px 10px', borderRadius:'4px',
+      zIndex:'9999', transition:'opacity 1s ease', pointerEvents:'none'
+    });
+    document.body.appendChild(el);
+    setTimeout(() => { el.style.opacity = '0'; }, 2500);
+    setTimeout(() => { el.remove(); }, 3600);
+  }
+
+  function registerSW() {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js')
+        .then(r => _c.log('[MP] SW registered:', r.scope))
+        .catch(e => _c.warn('[MP] SW failed:', e));
+    }
+  }
+</script>
+
+<!-- Expose _mpDataChange event trigger for any localStorage write the app does outside saveEntries -->
+<script>
+  // Wrap the key localStorage setters the app uses so cloud sync stays in sync
+  (function(){
+    const _keys = ['edgelog_loss_count','edgelog_lock_start','edgelog_lock_hours','edgelog_quotes','mp_assets'];
+    const _orig = localStorage.setItem.bind(localStorage);
+    localStorage.setItem = function(k, v) {
+      _orig(k, v);
+      if (_keys.includes(k)) window.dispatchEvent(new Event('_mpDataChange'));
+    };
+  })();
+</script>
+
+</body>
+</html>
